@@ -3,6 +3,7 @@ ob_end_clean();
 require_once __DIR__."/vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as DB;
 use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app = new \Slim\App();
 
