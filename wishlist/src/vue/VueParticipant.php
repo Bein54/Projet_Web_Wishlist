@@ -57,9 +57,6 @@ class VueParticipant
 
         return $html;
     }
-}
-
-
 private function ListeSouhaits() : string{
     $contains = "<p>";
     foreach ($this->elem as $liste) {
@@ -73,4 +70,9 @@ private function ListeSouhaits() : string{
     END;
     return $res;
 }
+    
+}
+
+
+
 
