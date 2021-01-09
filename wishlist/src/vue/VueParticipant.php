@@ -16,7 +16,7 @@ class VueParticipant
         $this->elem = $elem;
     }
 
-    function renderer()
+    public function render()
     {
         $content = '';
 
