@@ -42,6 +42,9 @@ $app->get('/Item/{id}',
      $resp->getBody()->write( 'un item par son id' ) ;
  return $resp ;
  });
-
-
+$app->get('/',
+    function (Request $req, Response $resp) {
+        $resp->getBody()->write( '<br>url principale' ) ;
+        return $resp ;
+    });
 $app->run();
