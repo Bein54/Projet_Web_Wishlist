@@ -23,7 +23,7 @@ class VueParticipant
         switch ($this->selecteur) {
             case TEST:
             {
-                $content = '<br>TEST<br>';
+                $content = $this->ListeSouhaits();
             }
             case VUE_PARTICIPANT:
             {
@@ -45,3 +45,19 @@ class VueParticipant
         return $html;
     }
 }
+
+
+private function ListeSouhaits() : string{
+    $contains = "<p>";
+    foreach ($this->elem as $liste) {
+        $contains += $liste['titre'].'<br>';
+    }
+    $contains+="<p>";
+    $res = <<<END
+    <div class="souhaits">
+    $res
+    </div>
+    END;
+    return $res;
+}
+
