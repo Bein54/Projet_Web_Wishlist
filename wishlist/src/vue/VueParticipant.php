@@ -68,7 +68,7 @@ private function ListeSouhaits() : string{
     $contains+="<p>";
     $res = <<<END
     <div class="souhaits">
-    $res
+        $contains
     </div>
     END;
     return $res;
