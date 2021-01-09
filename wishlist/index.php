@@ -28,7 +28,7 @@ $app->get('/Liste/ListeSouhaits',
  function (Request $req, Response $resp) {
      $resp = $resp->withStatus( 201 ) ;
  	$resp->getBody()->write( 'Liste de liste de souhaits' ) ;
- print 'Liste de liste de souhaits';
+ //print 'Liste de liste de souhaits';
  return $resp ;
 
  });
