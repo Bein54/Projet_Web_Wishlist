@@ -4,6 +4,7 @@ namespace wishlist\vue;
 
 const TEST = 0;
 const VUE_PARTICIPANT = 1;
+const OUI = 2;
 
 class VueParticipant
 {
@@ -26,9 +27,12 @@ class VueParticipant
                 $content = $this->listeSouhaits();
             }
             case VUE_PARTICIPANT:
+                $content = $this->detailListe();
             {
 
             }
+            case OUI:
+                $content = $this->giveItem();
         }
 
         $html = <<<END
@@ -67,7 +71,7 @@ private function listeSouhaits() : string{
     foreach ($this->elem as $liste) {
         $contains += $liste['titre'].'<br>';
     }
-    $contains+="<p>";
+    $contains+="</p>";
     $res = <<<END
     <div class="souhaits">
         $contains
@@ -76,13 +80,14 @@ private function listeSouhaits() : string{
     return $res;
 }
 
-private function detailListe
+private function detailListe() : string{
     $titre= $this->elem->titre;
     $items= $this->elem->items;
     $contains= "<h2>$titre<h2>".'<BR>'."<p> " 
     foreach ($items as $item){
         $contains+=$item['nom'].'<br>';
     }
+    $contains+='</p>'
     
     
     $res = <<<END
@@ -93,6 +98,16 @@ private function detailListe
     return $res;
 }
 
+private function giveItem(): string {
+    $contains = "<p>".$this->elem[0]['nom'].'</p>';
+
+    $res = <<<END
+    <div class="item">
+        $contains
+    </div>
+    END;
+    return $res;
+}
 
 
 
