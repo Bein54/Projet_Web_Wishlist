@@ -77,13 +77,16 @@ private function listeSouhaits() : string{
 }
 
 private function detailListe
-    $contains = "<p>";
-    foreach ($this->elem as $liste) {
-        $contains += $liste['titre'].'<br>';
+    $titre= $this->elem->titre;
+    $items= $this->elem->items;
+    $contains= "<h2>$titre<h2>".'<BR>'."<p> " 
+    foreach ($items as $item){
+        $contains+=$item['nom'].'<br>';
     }
-    $contains+="<p>";
+    
+    
     $res = <<<END
-    <div class="souhaits">
+    <div class="items">
         $contains
     </div>
     END;
