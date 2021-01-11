@@ -11,17 +11,17 @@ class VueParticipant
     private $selecteur;
     private $elem;
 
-    public function __construct($elem, $selecteur)
+    public function __construct($elem)
     {
-        $this->$selecteur = $selecteur;
+        
         $this->elem = $elem;
     }
 
-    public function render()
+    public function render($select)
     {
         $content = '';
 
-        switch ($this->selecteur) {
+        switch ($select) {
             case TEST:
             {
                 $content = $this->listeSouhaits();
@@ -81,7 +81,7 @@ private function listeSouhaits() : string{
 }
 
 private function detailListe() : string{
-    $titre= $this->elem->titre;
+    $titre= $this->elem->listes->titre;
     $items= $this->elem->items;
     $contains= "<h2>$titre<h2>".'<BR>'."<p> " 
     foreach ($items as $item){
