@@ -52,7 +52,7 @@ class VueParticipant
                                 <li><a href="#">liste des listes de souhaits</a></li>
                                 <li><a href="#">détail d'une liste</a></li>
                                 <li><a href="#">détail d'un item</a></li>
-                                <li><a href="#">liste des items</a></li>
+                                
                         </ul>
                     </nav>    
                     <a class="cta" href="#"><button>Mode Créateur</button></a> 
