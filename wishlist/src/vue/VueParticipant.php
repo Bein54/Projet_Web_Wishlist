@@ -23,7 +23,7 @@ class VueParticipant
         switch ($this->selecteur) {
             case TEST:
             {
-                $content = $this->ListeSouhaits();
+                $content = $this->listeSouhaits();
             }
             case VUE_PARTICIPANT:
             {
@@ -34,30 +34,35 @@ class VueParticipant
         $html = <<<END
         <!DOCTYPE html> 
         <html lang="fr">
-            <header>
-            <title>MyWishlist</title>
-            </header>
+            <head>
+                <meta charset="utf-8"> 
+                <title>MyWishlist</title>
+                <link rel="stylesheet" href="styles.css">   
+            </head>
+
             <body>
-                <nav class="navbar navbar=inverse navbar-static-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a href="a" class="navbar-brand">Slim3</a>
-                        </div>
-                        <div class="nav navbar-nav">
-                            <li><a href="a">liste de souhaits</a></li>
-                        </div>
-                    </div>
-                </nav>
+                <header>
+                    <nav>
+                        <ul class="nav_links">
+                            
+                                <li><a href="#">liste des listes de souhaits</a></li>
+                                <li><a href="#">détail d'une liste</a></li>
+                                <li><a href="#">détail d'un item</a></li>
+                                <li><a href="#">liste des items</a></li>
+                        </ul>
+                    </nav>    
+                    <a class="cta" href="#"><button>Mode Créateur</button></a> 
+                </header> 
                 <div class="content">
                  $content
-                </div>
+                </div>          
             </body>
-        </html>
+        </html>     
         END;
 
         return $html;
     }
-private function ListeSouhaits() : string{
+private function listeSouhaits() : string{
     $contains = "<p>";
     foreach ($this->elem as $liste) {
         $contains += $liste['titre'].'<br>';
@@ -70,7 +75,19 @@ private function ListeSouhaits() : string{
     END;
     return $res;
 }
-    
+
+private function detailListe
+    $contains = "<p>";
+    foreach ($this->elem as $liste) {
+        $contains += $liste['titre'].'<br>';
+    }
+    $contains+="<p>";
+    $res = <<<END
+    <div class="souhaits">
+        $contains
+    </div>
+    END;
+    return $res;
 }
 
 
