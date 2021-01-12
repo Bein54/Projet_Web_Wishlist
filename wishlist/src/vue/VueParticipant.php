@@ -2,9 +2,10 @@
 
 namespace wishlist\vue;
 
-const TEST = 0;
-const VUE_PARTICIPANT = 1;
-const OUI = 2;
+const MAIN = 0;
+const TEST = 1;
+const VUE_PARTICIPANT = 2;
+const OUI = 3;
 const CONSTRUCT = 3;
 
 class VueParticipant
@@ -18,24 +19,33 @@ class VueParticipant
 
     public function render($selecteur)
     {
-        $content = '';
+        $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
 
         switch ($selecteur) {
+            case MAIN:
+            {
+                $content = '';
+                break;
+            }
             case TEST:
             {
                 $content = $this->listeSouhaits();
+                break;
             }
             case VUE_PARTICIPANT:
             {
                 $content = $this->detailListe();
+                break;
             }
             case OUI:
             {
                 $content = $this->giveItem();
+                break;
             }
             case CONSTRUCT:
             {
                 $content = $this->login();
+                break;
             }
         }
 

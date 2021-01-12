@@ -4,6 +4,7 @@ require_once __DIR__."/vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as DB;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use wishlist\controleur\ControleurMain;
 
 $app = new \Slim\App();
 
@@ -44,7 +45,8 @@ $app->get('/Item/{id}',
  });
 $app->get('/',
     function (Request $req, Response $resp) {
-        $resp->getBody()->write( '<br>url principale' ) ;
+        $controleur = new ControleurMain();
+        $resp->getBody()->write( $controleur->getHTML() ) ;
         return $resp ;
     });
 $app->run();
