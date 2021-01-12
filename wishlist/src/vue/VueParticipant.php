@@ -11,28 +11,29 @@ class VueParticipant
     private $selecteur;
     private $elem;
 
-    public function __construct($elem)
+    public function __construct($elem, $selecteur)
     {
-        
+        $this->selecteur = $selecteur;
         $this->elem = $elem;
     }
 
-    public function render($select)
+    public function render()
     {
         $content = '';
 
-        switch ($select) {
+        switch ($this->selecteur) {
             case TEST:
             {
                 $content = $this->listeSouhaits();
             }
             case VUE_PARTICIPANT:
-                $content = $this->detailListe();
             {
-
+                $content = $this->detailListe();
             }
             case OUI:
+            {
                 $content = $this->giveItem();
+            }
         }
 
         $html = <<<END
@@ -66,47 +67,52 @@ class VueParticipant
 
         return $html;
     }
-private function listeSouhaits() : string{
-    $contains = "<p>";
-    foreach ($this->elem as $liste) {
-        $contains += $liste['titre'].'<br>';
-    }
-    $contains+="</p>";
-    $res = <<<END
+
+    private function listeSouhaits(): string
+    {
+        $contains = "<p>";
+        foreach ($this->elem as $liste) {
+            $contains .= $liste['titre'] . '<br>';
+        }
+        $contains .= "</p>";
+        $res = <<<END
     <div class="souhaits">
         $contains
     </div>
     END;
-    return $res;
-}
-
-private function detailListe() : string{
-    $titre= $this->elem->listes->titre;
-    $items= $this->elem->items;
-    $contains= "<h2>$titre<h2>".'<BR>'."<p> " 
-    foreach ($items as $item){
-        $contains+=$item['nom'].'<br>';
+        return $res;
     }
-    $contains+='</p>'
-    
-    
-    $res = <<<END
+
+    private function detailListe(): string
+    {
+        $titre = $this->elem->listes->titre;
+        $items = $this->elem->items;
+        $contains = "<h2>$titre<h2>" . '<BR>' . "<p> ";
+        foreach ($items as $item) {
+            $contains .= $item['nom'] . '<br>';
+        }
+        $contains .= '</p>';
+
+
+        $res = <<<END
     <div class="items">
         $contains
     </div>
     END;
-    return $res;
-}
+        return $res;
+    }
 
-private function giveItem(): string {
-    $contains = "<p>".$this->elem[0]['nom'].'</p>';
+    private function giveItem(): string
+    {
+        $contains = "<p>" . $this->elem[0]['nom'] . '</p>';
 
-    $res = <<<END
+        $res = <<<END
     <div class="item">
         $contains
     </div>
     END;
-    return $res;
+        return $res;
+    }
 }
 
 
