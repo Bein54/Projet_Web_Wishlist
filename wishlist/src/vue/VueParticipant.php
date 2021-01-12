@@ -8,20 +8,18 @@ const OUI = 2;
 
 class VueParticipant
 {
-    private $selecteur;
     private $elem;
 
-    public function __construct($elem, $selecteur)
+    public function __construct($elem)
     {
-        $this->selecteur = $selecteur;
         $this->elem = $elem;
     }
 
-    public function render()
+    public function render($selecteur)
     {
         $content = '';
 
-        switch ($this->selecteur) {
+        switch ($selecteur) {
             case TEST:
             {
                 $content = $this->listeSouhaits();
