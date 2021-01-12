@@ -5,6 +5,7 @@ namespace wishlist\vue;
 const TEST = 0;
 const VUE_PARTICIPANT = 1;
 const OUI = 2;
+const CONSTRUCT = 3;
 
 class VueParticipant
 {
@@ -32,6 +33,10 @@ class VueParticipant
             {
                 $content = $this->giveItem();
             }
+            case CONSTRUCT:
+            {
+                $content = $this->login();
+            }
         }
 
         $html = <<<END
@@ -51,6 +56,7 @@ class VueParticipant
                                 <li><a href="/Liste/ListeSouhaits">liste des listes de souhaits</a></li>
                                 <li><a href="/ListeItems/ListeSouhaits">détail d'une liste</a></li>
                                 <li><a href="#">détail d'un item</a></li>
+                                <li><a id="creation" href="#">login/sign up</a></li>
                                 
                         </ul>
                     </nav>    
