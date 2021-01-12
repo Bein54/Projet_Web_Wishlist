@@ -25,7 +25,7 @@ $db->setAsGlobal();
 $db->bootEloquent();
 print "connecté à la base de données\n";
 
-$app->get('/Liste/ListeSouhaits',
+$app->post('/Liste/ListeSouhaits',
  function (Request $req, Response $resp) {
      $resp = $resp->withStatus( 201 ) ;
  	$resp->getBody()->write( 'Liste de liste de souhaits' ) ;

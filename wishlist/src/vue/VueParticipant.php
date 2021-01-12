@@ -62,9 +62,11 @@ class VueParticipant
                 <header>
                     <nav>
                         <ul class="nav_links">
-                            
-                                <li><a href="/Liste/ListeSouhaits">liste des listes de souhaits</a></li>
-                                <li><a href="/ListeItems/ListeSouhaits">détail d'une liste</a></li>
+                                <form>
+                                    <li><a href="#">liste des listes de souhaits</a></li>
+                                </form>
+                                
+                                <li><input type="submit" value="détail d'une liste"></li>
                                 <li><a href="#">détail d'un item</a></li>
                                 <li><a id="creation" href="#">login/sign up</a></li>
                                 
