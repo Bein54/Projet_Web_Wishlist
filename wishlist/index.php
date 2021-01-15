@@ -27,12 +27,13 @@ print "connecté à la base de données\n";
 
 $app->get('/Liste/ListeSouhaits',
  function (Request $req, Response $resp) {
-     $resp = $resp->withStatus( 201 ) ;
- 	$resp->getBody()->write( 'Liste de liste de souhaits' ) ;
+    $controleur = new \wishlist\controleur\ControleurParticipation($this);
+    // $resp = $resp->withStatus( 201 ) ;
+ 	// $resp->getBody()->write( 'Liste de liste de souhaits' ) ;
  //print 'Liste de liste de souhaits';
- return $resp ;
-
+ return $controleur->getListeSouhaits($req,$resp) ;
  });
+
 $app->get('/ListeItems/ListeSouhaits',
  function (Request $req, Response $resp) {
      $resp->getBody()->write( 'Liste ditems d une liste de souhaits' ) ;
