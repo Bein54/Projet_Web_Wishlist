@@ -6,7 +6,7 @@ const MAIN = 0;
 const TEST = 1;
 const VUE_PARTICIPANT = 2;
 const OUI = 3;
-const CONSTRUCT = 3;
+const CONSTRUCT = 4;
 
 class VueParticipant
 {
