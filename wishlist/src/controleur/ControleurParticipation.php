@@ -20,4 +20,25 @@ class ControleurParticipation
         $path = $rq->getURI()->getBasePath();
 
     }
+    public function getListeSouhaits($rq, $rs, $args){
+        $path = $rq->getURI()->getBasePath();
+
+       // if (! isset($_SESSION['profile'])) {
+       //     $vue = new VueCompte("", $path);
+       //     $html = $vue->render(2);
+       // }
+       // else {
+            $listes = \wishlist\model\Liste::select("*")
+                //->where('user_id', '=', $_SESSION['profile']['id'])
+                ->get();
+
+            $vue = new \wishlist\vue\VueParticipant( $listes->toArray());
+            $html = $vue->render( TEST );
+        //}
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
+
+
 }
