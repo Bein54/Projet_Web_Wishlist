@@ -1,5 +1,5 @@
 <?php
-namespace wishlist\Model;
+namespace wishlist\models;
 
 use Illuminate\Database\Eloquent\Model as Model;
 
