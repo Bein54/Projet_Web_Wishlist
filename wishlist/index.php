@@ -27,7 +27,7 @@ $db->setAsGlobal();
 $db->bootEloquent();
 print "connecté à la base de données\n";
 
-$app->get('/Liste/ListeSouhaits',
+$app->get('/liste/listeSouhaits',
  function (Request $req, Response $resp) {
     $controleur = new \wishlist\controleur\ControleurParticipation($this);
     // $resp = $resp->withStatus( 201 ) ;
@@ -36,12 +36,12 @@ $app->get('/Liste/ListeSouhaits',
  return $controleur->getListeSouhaits($req,$resp) ;
  });
 
-$app->get('/ListeItems/ListeSouhaits',
+$app->get('/listeItems/listeSouhaits',
  function (Request $req, Response $resp) {
      $resp->getBody()->write( 'Liste ditems d une liste de souhaits' ) ;
  return $resp ;
  });
-$app->get('/Item/{id}',
+$app->get('/item/{id}',
  function (Request $req, Response $resp, $args) {
      $resp->getBody()->write( 'un item par son id' ) ;
  return $resp ;
