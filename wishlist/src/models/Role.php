@@ -1,8 +1,7 @@
 <?php
-
-
 namespace wishlist\Model;
 
+use Illuminate\Database\Eloquent\Model as Model;
 
 class Role extends Model {
     protected $primaryKey = 'id_role';

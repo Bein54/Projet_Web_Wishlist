@@ -1,9 +1,9 @@
 <?php
 namespace wishlist\model;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as Model;
 
-class Liste extends model{
+class Liste extends Model {
 	protected $table = 'liste';
 	protected $primaryKey = 'no';
 	public $timestamps = false;
