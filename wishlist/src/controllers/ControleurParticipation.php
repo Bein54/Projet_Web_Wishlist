@@ -33,7 +33,7 @@ class ControleurParticipation
                 ->get();
 
             $vue = new \wishlist\vue\VueParticipant( $listes->toArray());
-            $html = $vue->render( TEST );
+            $html = $vue->render( 1 );
         //}
 
         $rs->getBody()->write($html);
