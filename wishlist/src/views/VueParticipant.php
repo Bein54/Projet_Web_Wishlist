@@ -81,16 +81,15 @@ class VueParticipant
 
     private function listeSouhaits(): string
     {
-        $contains = "<p>";
+        $contains = "<ul class='nav_links'>";
         foreach ($this->elem as $liste) {
 
             $url_liste   = $this->container->router->pathFor( 'listeItems', ["no" => $liste["no"]] ) ;
-            //$url_liste   = $this->container->router->pathFor( 'liste' ) ;
-            $contains .="<a href='$url_liste'>". $liste['titre'] ."</a>". "<br>";
+            $contains .="<li><a href=$url_liste>". $liste['titre'] ."</a></li>";
         }
-        $contains .= "</p>";
+        $contains .= "</ul>";
         $res = <<<END
-    <div class="souhaits">
+    <div >
         $contains
     </div>
     END;
