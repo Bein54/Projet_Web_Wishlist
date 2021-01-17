@@ -13,7 +13,7 @@ class VueParticipant
         $this->elem = $elem;
     }
 
-    public function render($selecteur)
+    public function render(array $vars, $selecteur)
     {
         $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
 
@@ -44,14 +44,13 @@ class VueParticipant
                 break;
             }
         }
-
         $html = <<<END
         <!DOCTYPE html> 
         <html lang="fr">
             <head>
                 <meta charset="utf-8">
                 <title>MyWishlist</title>
-                <link rel="stylesheet" href="./css/styles.css">   
+                <link rel="stylesheet" href={$vars['basepath']}/css/styles.css>   
             </head>
 
             <body>

@@ -4,10 +4,11 @@
 namespace wishlist\controllers;
 
 
-use http\Env\Response;
+use Slim\Http\Response;
+use Slim\Http\Request;
 use wishlist\models\Item;
 use wishlist\models\Liste;
-use wishlist\vue\VueParticipant;
+use wishlist\views\VueParticipant;
 
 class ControleurParticipation
 {
@@ -20,8 +21,10 @@ class ControleurParticipation
         $path = $rq->getURI()->getBasePath();
 
     }
-    public function getListeSouhaits($rq, $rs, $args){
-        $path = $rq->getURI()->getBasePath();
+    public function getListeSouhaits (Request $rq,Response $rs, array $args): Response {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
 
        // if (! isset($_SESSION['profile'])) {
        //     $vue = new VueCompte("", $path);
@@ -33,7 +36,7 @@ class ControleurParticipation
                 //->where('user_id', '=', $_SESSION['profile']['id'])
 
             $vue = new \wishlist\views\VueParticipant( $listes->toArray());
-            $html = $vue->render( 1 );
+            $html = $vue->render($htmlvars, 1 );
         //}
 
         $rs->getBody()->write($html);

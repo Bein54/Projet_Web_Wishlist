@@ -15,7 +15,7 @@ print ("eloquent est installe ! \n");
 $db->addConnection([
 	'driver' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'php',
+	'database' => 'mywishlist',
 	'username' => 'root',
 	'password' => '',
 	'charset' => 'utf8',
@@ -59,9 +59,8 @@ $app->get('/item/{id}',
 
 $app->get('/',
     function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new \wishlist\controllers\ControleurMain();
-        $resp->getBody()->write( $controleur->getHTML() ) ;
-        return $resp ;
+        $controleur = new \wishlist\controllers\ControleurMain($this);
+        return $controleur->getHTML($req,$resp,$args);
     });
 
 $app->run();

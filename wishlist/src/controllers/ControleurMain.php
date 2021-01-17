@@ -3,19 +3,23 @@
 
 namespace wishlist\controllers;
 
-
+use Slim\Http\Response;
+use Slim\Http\Request;
 use wishlist\views\VueParticipant;
 
 class ControleurMain
 {
-    private $vueParticipant;
 
-    public function __construct()
-    {
-        $elem = [];
-        $this->vueParticipant = new VueParticipant($elem);
+    public function __construct(\Slim\Container $c){
+        $this->c = $c;
     }
-    public function getHTML(){
-        return $this->vueParticipant->render(0);
+    public function getHTML(Request $rq,Response $rs, array $args): Response {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $vue = new \wishlist\views\VueParticipant([]);
+        $html = $vue->render($htmlvars,0);
+        $rs->getBody()->write($html);
+        return $rs;
     }
 }
