@@ -1,7 +1,7 @@
 <?php
 namespace wishlist\model;
 
-use Illuminate\Database\Eloquent\ as Model;
+use Illuminate\Database\Eloquent\Model as Model;
 
 class Utilisateur extends Model{
     protected $table = 'utilisateur';
