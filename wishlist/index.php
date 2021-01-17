@@ -15,7 +15,7 @@ print ("eloquent est installe ! \n");
 $db->addConnection([
 	'driver' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'mywishlist',
+	'database' => 'php',
 	'username' => 'root',
 	'password' => '',
 	'charset' => 'utf8',
@@ -44,7 +44,7 @@ $app->post('/liste/listeSouhaits',
         return $controleur->getListeSouhaits($req,$resp,$args);
     })->setName('liste');
 
-$app->get('/listeItems/listeSouhaits',
+$app->get('/listeItems/listeSouhaits/{no}',
     function (Request $req, Response $resp, array $args) : Response {
 
         $controleur = new \wishlist\controllers\ControleurParticipation($this);

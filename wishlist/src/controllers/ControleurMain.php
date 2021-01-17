@@ -17,7 +17,7 @@ class ControleurMain
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        $vue = new \wishlist\views\VueParticipant([]);
+        $vue = new \wishlist\views\VueParticipant([], $this->c);
         $html = $vue->render($htmlvars,0);
         $rs->getBody()->write($html);
         return $rs;

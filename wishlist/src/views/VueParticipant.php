@@ -7,10 +7,12 @@ namespace wishlist\views;
 class VueParticipant
 {
     private $elem;
+    private $container;
 
-    public function __construct($elem)
+    public function __construct($elem, $container)
     {
         $this->elem = $elem;
+        $this->container = $container;
     }
 
     public function render(array $vars, $selecteur)
@@ -81,7 +83,10 @@ class VueParticipant
     {
         $contains = "<p>";
         foreach ($this->elem as $liste) {
-            $contains .= $liste['titre'] . '<br>';
+
+            $url_liste   = $this->container->router->pathFor( 'listeItems', ["no" => $liste["no"]] ) ;
+            //$url_liste   = $this->container->router->pathFor( 'liste' ) ;
+            $contains .="<a href='$url_liste'>". $liste['titre'] ."</a>". "<br>";
         }
         $contains .= "</p>";
         $res = <<<END

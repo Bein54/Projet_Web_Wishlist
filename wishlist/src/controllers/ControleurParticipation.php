@@ -25,7 +25,7 @@ class ControleurParticipation
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-
+        // session start avant d'utiliser session
        // if (! isset($_SESSION['profile'])) {
        //     $vue = new VueCompte("", $path);
        //     $html = $vue->render(2);
@@ -35,7 +35,7 @@ class ControleurParticipation
                 ->get();
                 //->where('user_id', '=', $_SESSION['profile']['id'])
 
-            $vue = new \wishlist\views\VueParticipant( $listes->toArray());
+            $vue = new \wishlist\views\VueParticipant( $listes->toArray(), $this->c);
             $html = $vue->render($htmlvars, 1 );
         //}
 
