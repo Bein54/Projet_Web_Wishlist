@@ -1,7 +1,7 @@
 <?php
 
 
-namespace wishlist\controleur;
+namespace wishlist\controllers;
 
 
 use http\Env\Response;
@@ -28,11 +28,11 @@ class ControleurParticipation
        //     $html = $vue->render(2);
        // }
        // else {
-            $listes = \wishlist\model\Liste::select("*")
+            $listes = \wishlist\models\Liste::select("*")
                 //->where('user_id', '=', $_SESSION['profile']['id'])
                 ->get();
 
-            $vue = new \wishlist\vue\VueParticipant( $listes->toArray());
+            $vue = new \wishlist\views\VueParticipant( $listes->toArray());
             $html = $vue->render( 1 );
         //}
 

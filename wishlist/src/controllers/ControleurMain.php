@@ -1,14 +1,14 @@
 <?php
 
 
-namespace wishlist\controleur;
+namespace wishlist\controllers;
 
 
-use wishlist\vue\VueParticipant;
+use wishlist\views\VueParticipant;
 
 class ControleurMain
 {
-    private VueParticipant $vueParticipant;
+    private $vueParticipant;
 
     public function __construct()
     {

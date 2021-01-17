@@ -4,7 +4,6 @@ require_once __DIR__."/vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as DB;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use wishlist\controleur\ControleurMain;
 
 $config = require_once __DIR__ . '/src/conf/settings.php';
 $c = new \Slim\Container($config);
@@ -29,7 +28,7 @@ print "connecté à la base de données\n";
 
 $app->get('/liste/listeSouhaits',
     function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new \wishlist\controleur\ControleurParticipation($this);
+        $controleur = new \wishlist\controllers\ControleurParticipation($this);
         // $resp = $resp->withStatus( 201 ) ;
  	    // $resp->getBody()->write( 'Liste de liste de souhaits' ) ;
         //print 'Liste de liste de souhaits';
@@ -38,7 +37,7 @@ $app->get('/liste/listeSouhaits',
 
 $app->post('/liste/listeSouhaits',
     function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new \wishlist\controleur\ControleurParticipation($this);
+        $controleur = new \wishlist\controllers\ControleurParticipation($this);
         // $resp = $resp->withStatus( 201 ) ;
         // $resp->getBody()->write( 'Liste de liste de souhaits' ) ;
         //print 'Liste de liste de souhaits';
@@ -48,19 +47,19 @@ $app->post('/liste/listeSouhaits',
 $app->get('/listeItems/listeSouhaits',
     function (Request $req, Response $resp, array $args) : Response {
 
-        $controleur = new \wishlist\controleur\ControleurParticipation($this);
+        $controleur = new \wishlist\controllers\ControleurParticipation($this);
         return $controleur->getListeItems($req,$resp,$args);
     })->setName('listeItems');
 
 $app->get('/item/{id}',
     function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new \wishlist\controleur\ControleurParticipation($this);
+        $controleur = new \wishlist\controllers\ControleurParticipation($this);
         return $controleur->getItem($req,$resp,$args);
     })->setName('item');
 
 $app->get('/',
     function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new ControleurMain();
+        $controleur = new \wishlist\controllers\ControleurMain();
         $resp->getBody()->write( $controleur->getHTML() ) ;
         return $resp ;
     });

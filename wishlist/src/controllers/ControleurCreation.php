@@ -1,10 +1,10 @@
 <?php
 
 
-namespace wishlist\controleur;
+namespace wishlist\controllers;
 
-use wishlist\Model\Item;
-use wishlist\Model\Liste;
+use wishlist\models\Item;
+use wishlist\models\Liste;
 
 class ControleurCreation
 {
