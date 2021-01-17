@@ -36,7 +36,7 @@ $app->get('/liste/listeSouhaits',
     })->setName('liste');
 
 
-$app->get('/listeItems/listeSouhaits/{id}',
+$app->get('/listeItems/listeSouhaits/{no}',
     function (Request $req, Response $resp, array $args) : Response {
 
         $controleur = new \wishlist\controllers\ControleurParticipation($this);

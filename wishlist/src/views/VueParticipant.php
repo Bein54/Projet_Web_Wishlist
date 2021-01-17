@@ -84,7 +84,7 @@ class VueParticipant
         $contains = "<ul class='nav_links'>";
         foreach ($this->elem as $liste) {
 
-            $url_liste   = $this->container->router->pathFor( 'listeItems', ["no" => $liste["no"]] ) ;
+            $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
             $contains .="<li><a href=$url_liste>". $liste['titre'] ."</a></li>";
         }
         $contains .= "</ul>";
