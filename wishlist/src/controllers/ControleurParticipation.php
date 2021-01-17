@@ -28,9 +28,9 @@ class ControleurParticipation
        //     $html = $vue->render(2);
        // }
        // else {
-            $listes = \wishlist\models\Liste::select("*")
-                //->where('user_id', '=', $_SESSION['profile']['id'])
+            $listes = \wishlist\models\Liste::query()->select('*')
                 ->get();
+                //->where('user_id', '=', $_SESSION['profile']['id'])
 
             $vue = new \wishlist\views\VueParticipant( $listes->toArray());
             $html = $vue->render( 1 );
