@@ -61,7 +61,7 @@ class VueParticipant
                         <ul class="nav_links">
                             
                                 <li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>
-                                <li><a href={$vars['basepath']}/listeItems/listeSouhaits>détail d'une liste</a></li>
+                                <li><a href={$vars['basepath']}/liste/listeSouhaits>détail d'une liste</a></li>
                                 <li><a href={$vars['basepath']}>détail d'un item</a></li>
                                 <li><a id="creation" href="#">login/sign up</a></li>
                                 

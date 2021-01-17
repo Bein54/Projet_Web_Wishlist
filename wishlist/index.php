@@ -15,7 +15,7 @@ print ("eloquent est installe ! \n");
 $db->addConnection([
 	'driver' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'php',
+	'database' => 'mywishlist',
 	'username' => 'root',
 	'password' => '',
 	'charset' => 'utf8',
@@ -35,21 +35,13 @@ $app->get('/liste/listeSouhaits',
         return $controleur->getListeSouhaits($req,$resp,$args);
     })->setName('liste');
 
-$app->post('/liste/listeSouhaits',
-    function (Request $req, Response $resp, array $args) : Response {
-        $controleur = new \wishlist\controllers\ControleurParticipation($this);
-        // $resp = $resp->withStatus( 201 ) ;
-        // $resp->getBody()->write( 'Liste de liste de souhaits' ) ;
-        //print 'Liste de liste de souhaits';
-        return $controleur->getListeSouhaits($req,$resp,$args);
-    })->setName('liste');
 
-$app->get('/listeItems/listeSouhaits/{no}',
+$app->get('/listeItems/listeSouhaits/{id}',
     function (Request $req, Response $resp, array $args) : Response {
 
         $controleur = new \wishlist\controllers\ControleurParticipation($this);
-        return $controleur->getListeItems($req,$resp,$args);
-    })->setName('listeItems');
+        return $controleur->getItemsListe($req,$resp,$args);
+    })->setName('itemsListe');
 
 $app->get('/item/{id}',
     function (Request $req, Response $resp, array $args) : Response {
