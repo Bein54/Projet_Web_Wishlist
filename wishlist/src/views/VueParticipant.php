@@ -59,8 +59,8 @@ class VueParticipant
                     <nav>
                         <ul class="nav_links">
                             
-                                <li><a href="./Liste/ListeSouhaits">liste des listes de souhaits</a></li>
-                                <li><a href="./ListeItems/ListeSouhaits">détail d'une liste</a></li>
+                                <li><a href="./liste/listeSouhaits">liste des listes de souhaits</a></li>
+                                <li><a href="./listeItems/listeSouhaits">détail d'une liste</a></li>
                                 <li><a href=".">détail d'un item</a></li>
                                 <li><a id="creation" href="#">login/sign up</a></li>
                                 
