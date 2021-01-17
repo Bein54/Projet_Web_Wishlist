@@ -6,7 +6,9 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\controleur\ControleurMain;
 
-$app = new \Slim\App();
+$config = require_once __DIR__ . '../src/conf/settings.php';
+$c = new \Slim\Container($config);
+$app = new \Slim\App($c);
 
 $db = new DB();
 print ("eloquent est installe ! \n");
