@@ -8,7 +8,7 @@
 }
 
 
-li, a, button, input, p {
+li, a, button, input, p, label {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
@@ -79,4 +79,9 @@ button {
 
 button:hover {
 	background-color: rgba(0,136,169,0.8);
+}
+.formulaire{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

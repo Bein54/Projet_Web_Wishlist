@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>MyWishlist</title>
+    <link rel="stylesheet" href=styles.css>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul class="nav_links">
+
+            <li><a href=./liste/listeSouhaits>liste des listes de souhaits</a></li>
+            <li><a id="creation" href="#">login/sign up</a></li>
+
+        </ul>
+    </nav>
+    <a class="cta" href="#"><button>Mode Créateur</button></a>
+</header>
+<div class="content">
+    <form method="post" class="formulaire">
+        <label>
+            Titre :
+            <input type="text" name="titre" value="">
+        </label>
+        <br>
+        <label>
+            Description :
+            <input type="text" name="description" value="">
+        </label>
+        <br>
+        <label>
+            Date d'expiration :
+            <input type="date" name="date-expiration" value="">
+        </label>
+        <br>
+        <button type="submit">créer la liste</button>
+    </form>
+</div>
+</body>
+</html>
