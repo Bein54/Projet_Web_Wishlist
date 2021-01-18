@@ -1,5 +1,7 @@
 # Projet_Web_Wishlist
 
+URL de l'application :
+
 Liste des fonctionnalités :
 
 Sélection et affichage de la liste des listes de souhait : 
@@ -14,4 +16,6 @@ Sélection d’un item d’une liste :
 URL :
 Réalisée par : VRIGNON Quentin
 
-Créer une liste : SCHMITT Léonard
+Créer une liste : 
+URL : 
+Réalisée par : SCHMITT Léonard
