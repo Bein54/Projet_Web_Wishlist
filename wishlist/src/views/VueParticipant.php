@@ -96,8 +96,9 @@ class VueParticipant
 
     private function detailListe(): string
     {
-        $titre = $this->elem[0]['titre'];
-        var_dump($titre);
+        $liste = $this->elem[0];
+        $titre = $liste['titre'];
+        
         $contains = "<ul class='reponse'> ". $titre . '<BR>'  ;
         foreach ($this->elem[1] as $item) {
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
