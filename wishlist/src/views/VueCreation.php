@@ -99,16 +99,23 @@ class VueCreation
     }
 
     private function ajouterItem(): String{
-        $html = '<form method="post" class="formulaire">
-        <select name= liste souhait>';
-            foreach ($elem[0] as $liste) {
-                $html .= "<option value='$liste['titre']'></option>";
+        $path = $this->container->router->pathFor( 'ajouterItemPost' ) ;
+        $html = '<form action=$path method="post" class="formulaire">
+        <label>
+            Liste : 
+            <select name="liste souhait">';
+            foreach ($this->elem as $liste) {
+
+                
+                
+                $html .= '<option value='.'<?php echo $liste["titre"]? >'.$liste['titre'].'</option>';
             }
 
-        $html .= '</select>
+        $html .= '</select></label>
+        <br>
         <label>
             Nom :
-            <input type="text" name="Nom" value="">
+            <input type="text" name="nom" value="">
         </label>
         <br>
         <label>
@@ -118,7 +125,12 @@ class VueCreation
         <br>
         <label>
             Image :
-            <input type="text" name="nom image" value="">
+            <input type="text" name="img" value="">
+        </label>
+        <br>
+        <label>
+            Tarif : 
+            <input type="text" name="tarif" value="">
         </label>
         <br>
         <button type="submit">créer l\'item</button>

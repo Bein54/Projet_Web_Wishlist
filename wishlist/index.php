@@ -61,13 +61,19 @@ $app->get('/create', function (Request $req, Response $resp, array $args) : Resp
 
 $app->post('/reservation/{id}', function (Request $req, Response $resp, array $args) : Response{
     $controleur = new \wishlist\controllers\ControleurCreation($this);
-    return $controleur->getFormulaire($req,$resp,$args);
+    return $controleur->reservation($req,$resp,$args);
 })->setName('reservation');
 
 $app->get('/ajouterItem', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurCreation($this);
     return $controleur->getFormulaireItem($req,$resp,$args);
 })->setName('ajouterItem');
+
+$app->post('/ajouterItemPost}', function (Request $req, Response $resp, array $args) : Response{
+    $controleur = new \wishlist\controllers\ControleurCreation($this);
+    return $controleur->ajouterItemPost($req,$resp,$args);
+})->setName('ajouterItemPost');
+
 
 
 $app->run();
