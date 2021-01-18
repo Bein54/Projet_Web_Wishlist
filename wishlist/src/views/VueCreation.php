@@ -57,7 +57,24 @@ class VueCreation
         return $html;
     }
     private function formulaire(): string{
-        $html = "";
+        $html = '<form method="post" class="formulaire">
+        <label>
+            Titre :
+            <input type="text" name="titre" value="">
+        </label>
+        <br>
+        <label>
+            Description :
+            <input type="text" name="description" value="">
+        </label>
+        <br>
+        <label>
+            Date d\'expiration :
+            <input type="date" name="date-expiration" value="">
+        </label>
+        <br>
+        <button type="submit">créer la liste</button>
+    </form>';
         return $html;
     }
 }
