@@ -8,6 +8,7 @@ use Slim\Http\Response;
 use Slim\Http\Request;
 use wishlist\models\Item;
 use wishlist\models\Liste;
+use wishlist\models\Reservation;
 use wishlist\views\VueParticipant;
 
 class ControleurParticipation
@@ -91,10 +92,10 @@ class ControleurParticipation
         ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $reserv = \wishlist\models\Reservation::query(->select('*'))
-        where('idItem', '=', $id)
+        $reserv = \wishlist\models\Reservation::query()->select('*')
+        ->where('idItem', '=', $id)
         ->get();
-        $elem = array($reserv ,$items );
+        $elem = array($reserv ,$item );
         $vue = new \wishlist\views\VueParticipant($elem, $this->c);
         $html = $vue->render($htmlvars, 3 );
         //}
