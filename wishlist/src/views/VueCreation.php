@@ -4,6 +4,8 @@
 namespace wishlist\views;
 
 
+use function Symfony\Component\Translation\t;
+
 class VueCreation
 {
     private $elem;
@@ -22,7 +24,7 @@ class VueCreation
         switch ($selecteur) {
             case 0:
             {
-                $content = '';
+                $content = $this->formulaire();
                 break;
             }
         }
@@ -56,7 +58,9 @@ class VueCreation
 
         return $html;
     }
-    private function formulaire(): string{
+
+    private function formulaire(): string
+    {
         $html = '<form method="post" class="formulaire">
         <label>
             Titre :
