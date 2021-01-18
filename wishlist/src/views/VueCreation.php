@@ -100,16 +100,14 @@ class VueCreation
 
     private function ajouterItem(): String{
         $path = $this->container->router->pathFor( 'ajouterItemPost' ) ;
-        $html = '<form action=$path method="post" class="formulaire">
+        
+                $html = "<form action='$path'". "method='post' class='formulaire'>
         <label>
             Liste : 
-            <select name="liste souhait">';
-            foreach ($this->elem as $liste) {
-
-                
-                
-                $html .= '<option value='.'<?php echo $liste["titre"]? >'.$liste['titre'].'</option>';
-            }
+            " .'<select name="liste" >';
+             foreach ($this->elem as $liste) {
+                 $html .= '<option value='.'<?php echo $liste["titre"]?><?php echo $liste["titre"] ?>'.'</option>';
+             }
 
         $html .= '</select></label>
         <br>
@@ -135,6 +133,12 @@ class VueCreation
         <br>
         <button type="submit">créer l\'item</button>
     </form>';
-        return $html;
+    $res = <<<END
+    <div >
+        $html
+    </div>
+    END;
+        return $res;
+        
     }
 }

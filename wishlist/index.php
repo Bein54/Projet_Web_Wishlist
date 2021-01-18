@@ -69,7 +69,7 @@ $app->get('/ajouterItem', function (Request $req, Response $resp, array $args) :
     return $controleur->getFormulaireItem($req,$resp,$args);
 })->setName('ajouterItem');
 
-$app->post('/ajouterItemPost}', function (Request $req, Response $resp, array $args) : Response{
+$app->post('/ajouterItemPost', function (Request $req, Response $resp, array $args) : Response{
     $controleur = new \wishlist\controllers\ControleurCreation($this);
     return $controleur->ajouterItemPost($req,$resp,$args);
 })->setName('ajouterItemPost');
