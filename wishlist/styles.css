@@ -8,13 +8,14 @@
 }
 
 
-li, a, button {
+li, a, button, input, p {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
 	color: #edf0f1;
 	text-decoration: none;
 }
+
 
 header {
 	display: flex;
@@ -23,7 +24,7 @@ header {
 	padding: 30px 10%;
 }
 
-.nav_links {
+.nav_links, .reponse {
 	list-style: none;
 }
 
@@ -39,6 +40,34 @@ header {
 	color: #0088a9;
 }
 
+.reponse {
+	
+	justify-content: space-between;
+	
+	padding: 10px 8%;
+}
+
+.reponse li a {
+	transition: all 0.3s ease 0s;
+}
+
+.reponse li a:hover {
+	color: orange;
+}
+
+
+input {
+	margin-top: 50px;
+	padding: 9px 25px;
+	background-color: rgba(0,136,169,1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+input:hover {
+	background-color: rgba(0,136,169,0.8);
+}
 button {
 	padding: 9px 25px;
 	background-color: rgba(0,136,169,1);

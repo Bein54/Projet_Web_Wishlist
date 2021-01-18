@@ -52,7 +52,7 @@ class VueParticipant
             <head>
                 <meta charset="utf-8">
                 <title>MyWishlist</title>
-                <link rel="stylesheet" href={$vars['basepath']}/css/styles.css>   
+                <link rel="stylesheet" href={$vars['basepath']}/styles.css>   
             </head>
 
             <body>
@@ -61,8 +61,6 @@ class VueParticipant
                         <ul class="nav_links">
                             
                                 <li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>
-                                <li><a href={$vars['basepath']}/liste/listeSouhaits>détail d'une liste</a></li>
-                                <li><a href={$vars['basepath']}>détail d'un item</a></li>
                                 <li><a id="creation" href="#">login/sign up</a></li>
                                 
                         </ul>
@@ -81,11 +79,11 @@ class VueParticipant
 
     private function listeSouhaits(): string
     {
-        $contains = "<ul class='nav_links'>";
+        $contains = "<ul class='reponse'>";
         foreach ($this->elem as $liste) {
 
             $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
-            $contains .="<li><a href=$url_liste>". $liste['titre'] ."</a></li>";
+            $contains .="<li class='reponse'><a href=$url_liste>". $liste['titre'] ."</a></li>";
         }
         $contains .= "</ul>";
         $res = <<<END
@@ -98,13 +96,14 @@ class VueParticipant
 
     private function detailListe(): string
     {
-        $titre = $this->elem->listes->titre;
-        $items = $this->elem->items;
-        $contains = "<h2>$titre<h2>" . '<BR>' . "<p> ";
-        foreach ($items as $item) {
-            $contains .= $item['nom'] . '<br>';
+        //$titre = $this->elem->listes['titre'];
+        
+        $contains = "<ul class='reponse'> " . '<BR>'  ;
+        foreach ($this->elem as $item) {
+            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] ."</a></li>";
         }
-        $contains .= '</p>';
+        $contains .= "</ul>";
 
 
         $res = <<<END
@@ -117,7 +116,7 @@ class VueParticipant
 
     private function giveItem(): string
     {
-        $contains = "<p>" . $this->elem[0]['nom'] . '</p>';
+        $contains = "<ul class='reponse'><p>" . $this->elem[0]['nom'].' :' . '<br>' . $this->elem[0]['descr']. '</p></ul>';
 
         $res = <<<END
     <div class="item">

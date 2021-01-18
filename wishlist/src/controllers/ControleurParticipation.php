@@ -44,6 +44,8 @@ class ControleurParticipation
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        $no = intval($args['no']);
+
         // session start avant d'utiliser session
         // if (! isset($_SESSION['profile'])) {
         //     $vue = new VueCompte("", $path);
@@ -51,12 +53,45 @@ class ControleurParticipation
         // }
         // else {
         $listes = \wishlist\models\Liste::query()->select('*')
-            ->where('token', '=', $args['nom'])
+            ->where('token', '=', $args['no'])
             ->get();
+
+        $items = \wishlist\models\Item::query()->select('*')
+        ->where('liste_id', '=', $no)
+        ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $vue = new \wishlist\views\VueParticipant( $listes->toArray(), $this->c);
-        $html = $vue->render($htmlvars, 1 );
+        $vue = new \wishlist\views\VueParticipant( $items->toArray(), $this->c);
+        $html = $vue->render($htmlvars, 2 );
+        //}
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
+
+
+
+
+
+    public function getItem(Request $rq,Response $rs, array $args): Response {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $id = $args['id'] ; 
+        // session start avant d'utiliser session
+        // if (! isset($_SESSION['profile'])) {
+        //     $vue = new VueCompte("", $path);
+        //     $html = $vue->render(2);
+        // }
+        // else {
+
+        $item = \wishlist\models\Item::query()->select('*')
+        ->where('id', '=', $id)
+        ->get();
+        //->where('user_id', '=', $_SESSION['profile']['id'])
+
+        $vue = new \wishlist\views\VueParticipant( $item->toArray(), $this->c);
+        $html = $vue->render($htmlvars, 3 );
         //}
 
         $rs->getBody()->write($html);
