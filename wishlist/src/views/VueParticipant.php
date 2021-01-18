@@ -143,11 +143,11 @@ class VueParticipant
         }
 
         $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';
-        //if (isset($idReserv)){
+        if (!isset($idReserv)){
             $contains .= "<form action='/reservation/{id}' method='post'>
                                 <INPUT TYPE='button' NAME='bouton' VALUE='Réserver'>
                             </FORM>";
-        //}
+        }
         $contains .= '</ul>';
         $res = <<<END
     <div class="item">

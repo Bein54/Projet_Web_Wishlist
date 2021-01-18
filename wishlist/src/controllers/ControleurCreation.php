@@ -27,4 +27,20 @@ class ControleurCreation
         $rs->getBody()->write($html);
         return $rs;
     }
+
+    public function reservation(Request $rq,Response $rs, array $args): Response{
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+
+        $post = $rq->getParsedBody();
+        var_dump($post);
+
+        $elem = [];
+        $vue = new \wishlist\views\VueCreation($elem, $this->c);
+        $html = $vue->render($htmlvars, 1);
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 }

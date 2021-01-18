@@ -57,5 +57,10 @@ $app->get('/',
 $app->get('/create', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurCreation($this);
     return $controleur->getFormulaire($req,$resp,$args);
-})->setName('create');;
+})->setName('create');
+
+$app->post('/reservation/{id}', function (Request $req, Response $resp, array $args) : Response{
+    $controleur = new \wishlist\controllers\ControleurCreation($this);
+    return $controleur->getFormulaire($req,$resp,$args);
+}
 $app->run();
