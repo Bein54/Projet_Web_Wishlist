@@ -31,7 +31,6 @@ class ControleurParticipation
             $listes = \wishlist\models\Liste::query()->select('*')
                 ->get();
                 //->where('user_id', '=', $_SESSION['profile']['id'])
-
             $vue = new \wishlist\views\VueParticipant( $listes->toArray(), $this->c);
             $html = $vue->render($htmlvars, 1 );
         //}
@@ -62,7 +61,7 @@ class ControleurParticipation
         ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $elem = array($liste ,$items );
+        $elem = array($liste->toArray() ,$items );
         $vue = new \wishlist\views\VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 2 );
         //}

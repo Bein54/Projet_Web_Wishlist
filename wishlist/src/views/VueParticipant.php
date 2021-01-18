@@ -96,8 +96,10 @@ class VueParticipant
 
     private function detailListe(): string
     {
-        $liste = $this->elem[0]->toarray();
-        $titre = $liste['titre'];
+        $titre = "";
+        foreach ($this->elem[0] as $liste) {
+            $titre = $liste['titre'];
+        }
         
         $contains = "<ul class='reponse'> ". $titre . '<BR>'  ;
         foreach ($this->elem[1] as $item) {
