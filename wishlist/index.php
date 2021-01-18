@@ -54,5 +54,8 @@ $app->get('/',
         $controleur = new \wishlist\controllers\ControleurMain($this);
         return $controleur->getHTML($req,$resp,$args);
     });
-
+$app->post('/create', function (Request $req, Response $resp, array $args) : Response {
+    $controleur = \wishlist\controllers\ControleurCreation($this);
+    return $controleur->getFormulaire($req,$resp,$args);
+})->setName('create');;
 $app->run();
