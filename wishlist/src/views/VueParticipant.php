@@ -83,7 +83,7 @@ class VueParticipant
         foreach ($this->elem as $liste) {
 
             $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
-            $contains .="<li class='reponse'><a href=$url_liste>". $liste['titre'] ."</a></li>";
+            $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";
         }
         $contains .= "</ul>";
         $res = <<<END
@@ -96,10 +96,10 @@ class VueParticipant
 
     private function detailListe(): string
     {
-        //$titre = $this->elem->listes['titre'];
-        
-        $contains = "<ul class='reponse'> " . '<BR>'  ;
-        foreach ($this->elem as $item) {
+        $titre = $this->elem[0]['titre'];
+        var_dump($titre);
+        $contains = "<ul class='reponse'> ". $titre . '<BR>'  ;
+        foreach ($this->elem[1] as $item) {
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
             $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] ."</a></li>";
         }
