@@ -57,13 +57,12 @@ class ControleurParticipation
             //->where('token', '=', $args['no'])
             ->where('no', '=', $no)
             ->get();
-            
         $items = \wishlist\models\Item::query()->select('*')
         ->where('liste_id', '=', $no)
         ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $elem = array($liste->toArray() ,$items->toArray() );
+        $elem = array($liste ,$items );
         $vue = new \wishlist\views\VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 2 );
         //}
