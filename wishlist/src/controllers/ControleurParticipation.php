@@ -31,7 +31,6 @@ class ControleurParticipation
             $listes = \wishlist\models\Liste::query()->select('*')
                 ->get();
                 //->where('user_id', '=', $_SESSION['profile']['id'])
-
             $vue = new \wishlist\views\VueParticipant( $listes->toArray(), $this->c);
             $html = $vue->render($htmlvars, 1 );
         //}
@@ -52,17 +51,18 @@ class ControleurParticipation
         //     $html = $vue->render(2);
         // }
         // else {
-        $listes = \wishlist\models\Liste::query()->select('*')
+        $liste = \wishlist\models\Liste::query()->select('*')
             //je sais pas ce que c'est mais t'avais pas le bon args
             //->where('token', '=', $args['no'])
+            ->where('no', '=', $no)
             ->get();
-
         $items = \wishlist\models\Item::query()->select('*')
         ->where('liste_id', '=', $no)
         ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $vue = new \wishlist\views\VueParticipant( $items->toArray(), $this->c);
+        $elem = array($liste->toArray() ,$items );
+        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 2 );
         //}
 
