@@ -53,7 +53,8 @@ class ControleurParticipation
         // }
         // else {
         $listes = \wishlist\models\Liste::query()->select('*')
-            ->where('token', '=', $args['no'])
+            //je sais pas ce que c'est mais t'avais pas le bon args
+            //->where('token', '=', $args['no'])
             ->get();
 
         $items = \wishlist\models\Item::query()->select('*')
