@@ -91,7 +91,11 @@ class ControleurParticipation
         ->get();
         //->where('user_id', '=', $_SESSION['profile']['id'])
 
-        $vue = new \wishlist\views\VueParticipant( $item->toArray(), $this->c);
+        $reserv = \wishlist\models\Reservation::query(->select('*'))
+        where('idItem', '=', $id)
+        ->get();
+        $elem = array($reserv ,$items );
+        $vue = new \wishlist\views\VueParticipant($elem, $this->c);
         $html = $vue->render($htmlvars, 3 );
         //}
 

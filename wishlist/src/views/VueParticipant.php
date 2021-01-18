@@ -97,14 +97,20 @@ class VueParticipant
     private function detailListe(): string
     {
         $titre = "";
+        $descr = "";
+        $no = "";
+        $expiration= "";
         foreach ($this->elem[0] as $liste) {
             $titre = $liste['titre'];
+            $descr = $liste['description'];
+            $no = $liste['no'];
+            $expiration = $liste['expiration'];
         }
         
-        $contains = "<ul class='reponse'> ". $titre . '<BR>'  ;
+        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
         foreach ($this->elem[1] as $item) {
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] ."</a></li>";
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
         }
         $contains .= "</ul>";
 
@@ -119,8 +125,30 @@ class VueParticipant
 
     private function giveItem(): string
     {
-        $contains = "<ul class='reponse'><p>" . $this->elem[0]['nom'].' :' . '<br>' . $this->elem[0]['descr']. '</p></ul>';
+        $id = "";
+        $nom = "";
+        $descr = "";
+        $img = "";
+        $tarif = "";
+        $idReserv;
+        foreach ($this->elem[1] as $item) {
+            $id = $item['id'];
+            $nom = $item['nom'];
+            $descr = $item['descr'];
+            $img = $item['img'];
+            $tarif = $item['tarif'];
+        }
+        foreach ($this->elem[0] as $reserv) {
+            $idReserv = $reserv['idReservation'];
+        }
 
+        $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';
+        //if (isset($idReserv)){
+            $contains .= "<form action='/reservation/{id}' method='post'>
+                                <INPUT TYPE='button' NAME='bouton' VALUE='Réserver'>
+                            </FORM>";
+        //}
+        $contains .= '</ul>';
         $res = <<<END
     <div class="item">
         $contains
