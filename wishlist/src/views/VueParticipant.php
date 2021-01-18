@@ -112,7 +112,7 @@ class VueParticipant
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
             $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
         }
-        $contains .= "</ul>";
+        $contains .= "<a class='cta' href='/ajouterItem'><button>ajouterItem</button></a> </ul>";
 
 
         $res = <<<END

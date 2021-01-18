@@ -27,6 +27,15 @@ class VueCreation
                 $content = $this->formulaire();
                 break;
             }
+
+            case 1:
+            {
+                $content = $this->reservation();
+                break;
+            }
+            case 2:
+            $content = $this->ajouterItem();
+            break;
         }
         $html = <<<END
         <!DOCTYPE html> 
@@ -78,6 +87,41 @@ class VueCreation
         </label>
         <br>
         <button type="submit">créer la liste</button>
+    </form>';
+        return $html;
+    }
+
+
+
+
+    private function reservation(): string{
+
+    }
+
+    private function ajouterItem(): String{
+        $html = '<form method="post" class="formulaire">
+        <select name= liste souhait>';
+            foreach ($elem[0] as $liste) {
+                $html .= "<option value='$liste['titre']'></option>";
+            }
+
+        $html .= '</select>
+        <label>
+            Nom :
+            <input type="text" name="Nom" value="">
+        </label>
+        <br>
+        <label>
+            Description :
+            <input type="text" name="description" value="">
+        </label>
+        <br>
+        <label>
+            Image :
+            <input type="text" name="nom image" value="">
+        </label>
+        <br>
+        <button type="submit">créer l\'item</button>
     </form>';
         return $html;
     }
