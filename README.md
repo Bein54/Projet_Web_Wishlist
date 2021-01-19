@@ -8,7 +8,7 @@ Sélection et affichage de la liste des listes de souhait :
 URL : 
 Réalisée par : NICOL Benoît / FERAUX Julien
 
-Sélection et affichage de la liste des items d’une liste (n°2) : 
+Détail d'une liste : 
 URL :
 Réalisée par : VRIGNON Quentin / NICOL Benoît
 
@@ -19,3 +19,12 @@ Réalisée par : VRIGNON Quentin
 Créer une liste : 
 URL : 
 Réalisée par : SCHMITT Léonard
+
+
+Partage des URL :
+URL : 
+Réalisée par : VRIGNON Quentin
+
+Ajout d'un item à une liste : 
+URL :
+Réalisée par : VRIGNON Quentin

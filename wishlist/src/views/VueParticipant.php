@@ -42,7 +42,7 @@ class VueParticipant
             }
             case 4:
             {
-                $content = $this->login();
+                $content = $this->getUrl();
                 break;
             }
         }
@@ -97,6 +97,7 @@ class VueParticipant
 
     private function detailListe(): string
     {
+        
         $titre = "";
         $descr = "";
         $no = "";
@@ -106,6 +107,7 @@ class VueParticipant
             $descr = $liste['description'];
             $no = $liste['no'];
             $expiration = $liste['expiration'];
+            $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste["no"]] ) ;
         }
         
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
@@ -114,7 +116,7 @@ class VueParticipant
             $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
-        $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a> </ul>";
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>  <a class='cta' href=$path><button>avoir l'url</button> </ul>";
 
 
         $res = <<<END
@@ -157,6 +159,42 @@ class VueParticipant
     END;
         return $res;
     }
+
+     private function getUrl(): string
+    {
+        
+        $titre = "";
+        $descr = "";
+        $no = "";
+        $expiration= "";
+        foreach ($this->elem[0] as $liste) {
+            $titre = $liste['titre'];
+            $descr = $liste['description'];
+            $no = $liste['no'];
+            $expiration = $liste['expiration'];
+            $path = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
+        }
+        
+        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
+        foreach ($this->elem[1] as $item) {
+            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
+        }
+        $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>
+        <br><br><br><br> <p>url : $path<p> </ul>";
+
+
+        $res = <<<END
+    <div class="items">
+        $contains
+    </div>
+    END;
+        return $res;
+    }
+
+
+
 }
 
 

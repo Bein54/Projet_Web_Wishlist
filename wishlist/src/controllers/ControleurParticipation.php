@@ -111,4 +111,38 @@ class ControleurParticipation
 
         $vue = new \wishlist\views\VueParticipant($elem, $this->c);
     }
+
+
+
+
+    public function getUrl(Request $rq,Response $rs, array $args): Response {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $no = intval($args['no']);
+
+        // session start avant d'utiliser session
+        // if (! isset($_SESSION['profile'])) {
+        //     $vue = new VueCompte("", $path);
+        //     $html = $vue->render(2);
+        // }
+        // else {
+        $liste = \wishlist\models\Liste::query()->select('*')
+            //je sais pas ce que c'est mais t'avais pas le bon args
+            //->where('token', '=', $args['no'])
+            ->where('no', '=', $no)
+            ->get();
+        $items = \wishlist\models\Item::query()->select('*')
+        ->where('liste_id', '=', $no)
+        ->get();
+        //->where('user_id', '=', $_SESSION['profile']['id'])
+
+        $elem = array($liste->toArray() ,$items );
+        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
+        $html = $vue->render($htmlvars, 4 );
+        //}
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 }

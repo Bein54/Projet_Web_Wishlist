@@ -86,4 +86,9 @@ $app->post('/connexion', function (Request $req, Response $resp, array $args) : 
     return $controleur->getConnexion($req, $resp, $args);
 })->setName('connexion');
 
+$app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) : Response{
+    $controleur = new \wishlist\controllers\ControleurParticipation($this);
+    return $controleur->getUrl($req,$resp,$args);
+})->setName('giveUrl');
+
 $app->run();
