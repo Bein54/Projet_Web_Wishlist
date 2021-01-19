@@ -72,12 +72,15 @@ class ControleurCreation
 
         $post = $rq->getParsedBody();
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING) ;
+        $options = array(
+            'flags' => FILTER_FLAG_ALLOW_FRACTION,
+            );
         $description = filter_var($post['description'] , FILTER_SANITIZE_STRING) ;
         $id = filter_var($post['liste'], FILTER_SANITIZE_NUMBER_INT);
         $id = intval($id);
 
         $img = filter_var($post['img'], FILTER_SANITIZE_STRING);
-        $tarif = filter_var($post['tarif'], FILTER_SANITIZE_NUMBER_FLOAT);
+        $tarif = filter_var($post['tarif'], FILTER_SANITIZE_NUMBER_FLOAT, $options);
 
         $liste = \wishlist\models\Liste::query()->select('*')
                 ->where('no', '=', $id)
