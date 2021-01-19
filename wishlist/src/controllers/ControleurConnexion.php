@@ -16,7 +16,7 @@ class ControleurConnexion
         $this->c = $c;
     }
 
-    public function getFormulaire(Request $rq, Response $rs, array $args): Response
+    public function getFormulaireConnexion(Request $rq, Response $rs, array $args): Response
     {
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()

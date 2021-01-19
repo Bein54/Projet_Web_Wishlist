@@ -84,6 +84,6 @@ $app->post('/connexion', function (Request $req, Response $resp, array $args) : 
     consol.log("ici");
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->getConnexion($req, $resp, $args);
-})->setName('ajouterListePost');
+})->setName('connexion');
 
 $app->run();
