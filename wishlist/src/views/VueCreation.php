@@ -107,7 +107,7 @@ class VueCreation
             Liste : 
             " . '<select name="liste" >';
         foreach ($this->elem as $liste) {
-            $html .= sprintf('<option value="%s">%s</option>', $liste['titre'], $liste['titre']);
+            $html .= sprintf('<option value="%s">%s</option>', $liste['no'], $liste['titre']);
         }
 
         $html .= '</select></label>
