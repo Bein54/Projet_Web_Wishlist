@@ -7,7 +7,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Item;
 use wishlist\models\Liste;
-use wishlist\models\reservation;
 
 
 class ControleurCreation
@@ -56,7 +55,7 @@ class ControleurCreation
             'basepath' => $rq->getUri()->getBasePath()
         ];
 
-        $listes = \wishlist\models\Liste::query()->select('*')
+        $listes = Liste::query()->select('*')
             ->get();
 
 
@@ -85,7 +84,7 @@ class ControleurCreation
         $img = filter_var($post['img'], FILTER_SANITIZE_STRING);
         $tarif = filter_var($post['tarif'], FILTER_SANITIZE_NUMBER_FLOAT, $options);
 
-        $liste = \wishlist\models\Liste::query()->select('*')
+        $liste = Liste::query()->select('*')
                 ->where('no', '=', $id)
                 ->get();
 
