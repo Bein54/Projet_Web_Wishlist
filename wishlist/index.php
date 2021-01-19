@@ -54,6 +54,7 @@ $app->get('/',
         $controleur = new \wishlist\controllers\ControleurMain($this);
         return $controleur->getHTML($req,$resp,$args);
     })->setName('racine');
+
 $app->get('/ajouterListe', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurCreation($this);
     return $controleur->getFormulaire($req,$resp,$args);

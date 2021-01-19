@@ -36,6 +36,9 @@ class VueCreation
             case 2:
                 $content = $this->ajouterItem();
                 break;
+            case 3:
+                $content = $this->ItemConfirmed();
+                break;
         }
         $html = <<<END
         <!DOCTYPE html> 
@@ -56,7 +59,7 @@ class VueCreation
                                 
                         </ul>
                     </nav>    
-                    <a class="cta" href="#"><button>Mode Créateur</button></a> 
+                    
                 </header> 
                 <div class="content">
                  $content
@@ -105,12 +108,12 @@ class VueCreation
         $html = "<form action='$path' method='post' class='formulaire'>
         <label>
             Liste : 
-            " . '<select name="liste" >';
+            " . '<div class="box"><select name="liste" >';
         foreach ($this->elem as $liste) {
-            $html .= sprintf('<option value="%s">%s</option>', $liste['no'], $liste['titre']);
+            $html .= sprintf('<option value="%d">%s</option>', $liste['no'], $liste['titre']);
         }
 
-        $html .= '</select></label>
+        $html .= '</select></div></label>
         <br>
         <label>
             Nom :
@@ -142,4 +145,15 @@ class VueCreation
         return $res;
 
     }
+
+
+    public function ItemConfirmed(): string
+    {
+        $path = $this->container->router->pathFor('racine');
+
+       return $contains = "<ul class='reponse'><p>L'item à bien été crée<p>
+        <br>
+        <a href=$path><button >Home page </button></a></ul>";
+
+}
 }

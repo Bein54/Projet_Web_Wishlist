@@ -69,6 +69,9 @@ class ControleurCreation
 
     public function ajouterItemPost(Request $rq, Response $rs, $args): Response
     {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
 
         $post = $rq->getParsedBody();
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING) ;
@@ -95,8 +98,14 @@ class ControleurCreation
         $i->tarif = $tarif;
         $i->save();
 
-        $path = $this->c->router->pathFor('racine');
-        return $rs->withRedirect($path);
+        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $html = $vue->render($htmlvars, 3);
+
+        $rs->getBody()->write($html);
+        return $rs;
+        // $path = $this->c->router->pathFor('racine');
+        // var_dump($path);
+        // return $rs->withRedirect($path, 303);
     }
 
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
@@ -118,8 +127,8 @@ class ControleurCreation
         $liste->token = $token;
         $liste->save();
 
-        $path = $this->c->router->pathFor('ajouterListe');
-        $rs = $rs->withRedirect($path);
+        // $path = $this->c->router->pathFor('ajouterListe');
+        // $rs = $rs->withRedirect($path);
         return $rs;
     }
 }

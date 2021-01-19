@@ -65,7 +65,7 @@ class VueParticipant
                                 
                         </ul>
                     </nav>    
-                    <a class="cta" href="#"><button>Mode Créateur</button></a> 
+                    
                 </header> 
                 <div class="content">
                  $content
