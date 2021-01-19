@@ -111,7 +111,9 @@ class ControleurCreation
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
         $post = $rq->getParsedBody();
-        var_dump($post);
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
 
         $titre=filter_var($post['titre'], FILTER_SANITIZE_STRING);
         $desc=filter_var($post['description'], FILTER_SANITIZE_STRING);
@@ -129,6 +131,10 @@ class ControleurCreation
 
         // $path = $this->c->router->pathFor('ajouterListe');
         // $rs = $rs->withRedirect($path);
+        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $html = $vue->render($htmlvars, 4);
+
+        $rs->getBody()->write($html);
         return $rs;
     }
 }
