@@ -6,7 +6,7 @@ Liste des fonctionnalités :
 
 Sélection et affichage de la liste des listes de souhait : 
 URL : 
-Réalisée par : NICOL Benoît
+Réalisée par : NICOL Benoît / FERAUX Julien
 
 Sélection et affichage de la liste des items d’une liste (n°2) : 
 URL :
