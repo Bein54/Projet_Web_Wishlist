@@ -65,7 +65,7 @@ class VueParticipant
                                 
                         </ul>
                     </nav>    
-                    <a class="cta" href="#"><button>Mode Créateur</button></a> 
+                    
                 </header> 
                 <div class="content">
                  $content
@@ -85,7 +85,8 @@ class VueParticipant
             $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
             $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";
         }
-        $contains .= "</ul>";
+         $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterListe</button></a></ul>";
         $res = <<<END
     <div >
         $contains
@@ -131,7 +132,6 @@ class VueParticipant
         $descr = "";
         $img = "";
         $tarif = "";
-        $idReserv;
         foreach ($this->elem[1] as $item) {
             $id = $item['id'];
             $nom = $item['nom'];

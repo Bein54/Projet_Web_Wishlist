@@ -5,7 +5,6 @@ namespace wishlist\controllers;
 
 use Slim\Http\Response;
 use Slim\Http\Request;
-use wishlist\views\VueParticipant;
 
 class ControleurMain
 {
