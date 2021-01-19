@@ -80,17 +80,12 @@ class ControleurParticipation
             'basepath' => $rq->getUri()->getBasePath()
         ];
         $id = $args['id'] ; 
-        // session start avant d'utiliser session
-        // if (! isset($_SESSION['profile'])) {
-        //     $vue = new VueCompte("", $path);
-        //     $html = $vue->render(2);
-        // }
-        // else {
+        
 
         $item = \wishlist\models\Item::query()->select('*')
         ->where('id', '=', $id)
         ->get();
-        //->where('user_id', '=', $_SESSION['profile']['id'])
+        
 
         $reserv = \wishlist\models\Reservation::query()->select('*')
         ->where('idItem', '=', $id)
@@ -98,22 +93,11 @@ class ControleurParticipation
         $elem = array($reserv ,$item );
         $vue = new \wishlist\views\VueParticipant($elem, $this->c);
         $html = $vue->render($htmlvars, 3 );
-        //}
+        
 
         $rs->getBody()->write($html);
         return $rs;
     }
-
-    public function reservationItem(Request $rq,Response $rs, array $args): Response {
-        $path = $rq->getURI()->getBasePath();
-        $id = $args['item'];
-
-
-        $vue = new \wishlist\views\VueParticipant($elem, $this->c);
-    }
-
-
-
 
     public function getUrl(Request $rq,Response $rs, array $args): Response {
         $htmlvars = [

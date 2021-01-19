@@ -7,6 +7,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Item;
 use wishlist\models\Liste;
+use wishlist\models\Reservation;
 
 
 class ControleurCreation
@@ -32,22 +33,7 @@ class ControleurCreation
         return $rs;
     }
 
-    public function reservation(Request $rq, Response $rs, array $args): Response
-    {
-        $htmlvars = [
-            'basepath' => $rq->getUri()->getBasePath()
-        ];
-
-        $post = $rq->getParsedBody();
-        var_dump($post);
-
-        $elem = [];
-        $vue = new \wishlist\views\VueCreation($elem, $this->c);
-        $html = $vue->render($htmlvars, 1);
-
-        $rs->getBody()->write($html);
-        return $rs;
-    }
+   
 
     public function getFormulaireItem(Request $rq, Response $rs, array $args): Response
     {
@@ -102,10 +88,9 @@ class ControleurCreation
 
         $rs->getBody()->write($html);
         return $rs;
-        // $path = $this->c->router->pathFor('racine');
-        // var_dump($path);
-        // return $rs->withRedirect($path, 303);
     }
+
+
 
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
@@ -132,6 +117,29 @@ class ControleurCreation
         // $rs = $rs->withRedirect($path);
         $vue = new \wishlist\views\VueCreation([], $this->c);
         $html = $vue->render($htmlvars, 4);
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
+
+
+    public function reservation(Request $rq, Response $rs, array $args): Response
+    {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $post = $rq->getParsedBody();
+        $id = filter_var($post['id'], FILTER_SANITIZE_NUMBER_INT);
+        $id = intval($id);
+        var_dump($id);
+        $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
+        $r = new Reservation;
+        $r->identifiant = $nom;
+        $r->idItem = $id;
+        $r->save();
+
+        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $html = $vue->render($htmlvars, 5);
 
         $rs->getBody()->write($html);
         return $rs;

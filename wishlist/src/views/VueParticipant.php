@@ -147,8 +147,20 @@ class VueParticipant
 
         $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';
         if (!isset($idReserv)){
-            $contains .= "<form action='reservation' method='post'>
-                                <INPUT TYPE='button' NAME='bouton' VALUE='Réserver'>
+            $path = $this->container->router->pathFor('reservation');
+            $contains .= "<form action='$path' method='post'>
+                            <label>
+                                Nom :
+                                <INPUT TYPE='text' NAME='nom' VALUE=''>
+                            </label>
+
+                            <label>
+                            
+                                id de l'item :
+                                <INPUT  TYPE='text' NAME='id' VALUE='$id'>
+                            </label>
+                        
+                                <button TYPE='submit'>réserver</button>
                             </FORM>";
         }
         $contains .= '</ul>';

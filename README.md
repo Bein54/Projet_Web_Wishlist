@@ -1,5 +1,21 @@
 # Projet_Web_Wishlist
 
+Pour lancer l'application, il faut :
+
+ créer la table reservation :
+ 
+ DROP TABLE IF EXISTS `reservation`;
+ create table reservation (
+idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
+idItem int(11) not null,
+Identifiant varchar(50),
+FOREIGN KEY(idItem)REFERENCES item(id)
+)
+
+
+
+
+
 URL de l'application :
 
 Liste des fonctionnalités :

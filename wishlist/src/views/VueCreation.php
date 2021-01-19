@@ -40,12 +40,17 @@ class VueCreation
             }
             case 3:
             {
-                $content = $this->ItemConfirmed();
+                $content = $this->itemConfirmed();
                 break;
             }
             case 4:
             {
-                $content = $this->ListeConfirmed();
+                $content = $this->listeConfirmed();
+                break;
+            }
+            case 5:
+            {
+                $content = $this->reservationConfirmed();
                 break;
             }
         }
@@ -156,7 +161,7 @@ class VueCreation
     }
 
 
-    public function ItemConfirmed(): string
+    public function itemConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
 
@@ -165,11 +170,21 @@ class VueCreation
         <a href=$path><button >Home page </button></a></ul>";
 
 }
-    public function ListeConfirmed(): string
+    public function listeConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
 
        return $contains = "<ul class='reponse'><p>La liste a bien été crée<p>
+        <br>
+        <a href=$path><button >Home page </button></a></ul>";
+
+}
+
+public function reservationConfirmed(): string
+    {
+        $path = $this->container->router->pathFor('racine');
+
+       return $contains = "<ul class='reponse'><p>Votre réservation à bien été enregistré<p>
         <br>
         <a href=$path><button >Home page </button></a></ul>";
 
