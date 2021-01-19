@@ -92,7 +92,7 @@ class ControleurCreation
 
     }
 
-    public function gererPost(Request $rq, Response $rs, array $args): Response
+    public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
         print $rq->getParsedBody();
 
