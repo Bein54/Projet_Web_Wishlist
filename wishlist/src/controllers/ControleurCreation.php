@@ -96,8 +96,8 @@ class ControleurCreation
     {
         var_dump($rq->getParsedBody());
 
-        $path = $this->c->router->pathFor( 'create' ) ;
-
+        $path = $this->c->router->pathFor( 'ajouterListe' ) ;
+        var_dump($path);
         return $rs->withRedirect($path);
     }
 }

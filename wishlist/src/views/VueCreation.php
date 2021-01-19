@@ -69,7 +69,9 @@ class VueCreation
 
     private function formulaire(): string
     {
-        $html = '<form method="post" class="formulaire" action="./create/post">
+        $path = $this->container->router->pathFor('ajouterListePost');
+
+        $html = sprintf('<form method="post" class="formulaire" action="%s">
         <label>
             Titre :
             <input type="text" name="titre" value="">
@@ -86,7 +88,7 @@ class VueCreation
         </label>
         <br>
         <button type="submit">créer la liste</button>
-    </form>';
+    </form>', $path);
         return $html;
     }
 
@@ -105,7 +107,7 @@ class VueCreation
             Liste : 
             " . '<select name="liste" >';
         foreach ($this->elem as $liste) {
-            $html .= sprintf('<option value=\' %s \' </option>', $liste);
+            $html .= sprintf('<option value="%s">%s</option>', $liste['titre'], $liste['titre']);
         }
 
         $html .= '</select></label>
