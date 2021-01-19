@@ -85,7 +85,8 @@ class VueParticipant
             $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
             $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";
         }
-        $contains .= "</ul>";
+         $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterListe</button></a></ul>";
         $res = <<<END
     <div >
         $contains
