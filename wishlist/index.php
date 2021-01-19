@@ -77,5 +77,5 @@ $app->post('/ajouterItemPost', function (Request $req, Response $resp, array $ar
 $app->post('/create/post', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurCreation($this);
     return $controleur->gererPost($req, $resp, $args);
-});
+})->setName('ajouterListe');
 $app->run();
