@@ -103,4 +103,12 @@ class ControleurParticipation
         $rs->getBody()->write($html);
         return $rs;
     }
+
+    public function reservationItem(Request $rq,Response $rs, array $args): Response {
+        $path = $rq->getURI()->getBasePath();
+        $id = $args['item'];
+
+
+        $vue = new \wishlist\views\VueParticipant($elem, $this->c);
+    }
 }

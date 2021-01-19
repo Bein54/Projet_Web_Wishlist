@@ -79,3 +79,10 @@ $app->post('/ajouterListePost', function (Request $req, Response $resp, array $a
     return $controleur->ajouterListe($req, $resp, $args);
 })->setName('ajouterListePost');
 $app->run();
+
+$app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
+    consol.log("ici");
+    $controleur = new \wishlist\controllers\ControleurConnexion($this);
+    return $controleur->getConnexion($req, $resp, $args);
+})->setName('ajouterListePost');
+$app->run();
