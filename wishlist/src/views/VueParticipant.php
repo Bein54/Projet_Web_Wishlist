@@ -157,7 +157,7 @@ class VueParticipant
                             <label>
                             
                                 id de l'item :
-                                <INPUT  TYPE='text' NAME='id' VALUE='$id'>
+                                <INPUT  TYPE='text' NAME='id' disabled='disabled' VALUE='$id'>
                             </label>
                         
                                 <button TYPE='submit'>réserver</button>
