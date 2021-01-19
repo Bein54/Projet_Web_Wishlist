@@ -34,8 +34,8 @@ class VueCreation
                 break;
             }
             case 2:
-            $content = $this->ajouterItem();
-            break;
+                $content = $this->ajouterItem();
+                break;
         }
         $html = <<<END
         <!DOCTYPE html> 
@@ -64,13 +64,12 @@ class VueCreation
             </body>
         </html>     
         END;
-
         return $html;
     }
 
     private function formulaire(): string
     {
-        $html = '<form method="post" class="formulaire">
+        $html = '<form method="post" class="formulaire" action="./create/post">
         <label>
             Titre :
             <input type="text" name="titre" value="">
@@ -92,22 +91,22 @@ class VueCreation
     }
 
 
-
-
-    private function reservation(): string{
+    private function reservation(): string
+    {
 
     }
 
-    private function ajouterItem(): String{
-        $path = $this->container->router->pathFor( 'ajouterItemPost' ) ;
-        
-                $html = "<form action='$path'". "method='post' class='formulaire'>
+    private function ajouterItem(): string
+    {
+        $path = $this->container->router->pathFor('ajouterItemPost');
+
+        $html = "<form action='$path' method='post' class='formulaire'>
         <label>
             Liste : 
-            " .'<select name="liste" >';
-             foreach ($this->elem as $liste) {
-                 $html .= '<option value='.'<?php echo $liste["titre"]?><?php echo $liste["titre"] ?>'.'</option>';
-             }
+            " . '<select name="liste" >';
+        foreach ($this->elem as $liste) {
+            $html .= sprintf('<option value=\' %s \' </option>', $liste);
+        }
 
         $html .= '</select></label>
         <br>
@@ -133,12 +132,12 @@ class VueCreation
         <br>
         <button type="submit">créer l\'item</button>
     </form>';
-    $res = <<<END
+        $res = <<<END
     <div >
         $html
     </div>
     END;
         return $res;
-        
+
     }
 }

@@ -87,16 +87,17 @@ class ControleurCreation
         $i->tarif = $tarif;
         $i->save();
 
-        $path = $this->container->router->pathFor( '/' ) ;
+        $path = $this->c->router->pathFor( '/' ) ;
         return $rs->withRedirect($path);
 
     }
 
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
-        print $rq->getParsedBody();
+        var_dump($rq->getParsedBody());
 
-        $rs = $rs->withStatus(201);
-        return $rs;
+        $path = $this->c->router->pathFor( 'create' ) ;
+
+        return $rs->withRedirect($path);
     }
 }
