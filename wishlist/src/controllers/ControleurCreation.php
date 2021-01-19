@@ -14,10 +14,13 @@ class ControleurCreation
 {
     private $c;
 
-    public function __construct(\Slim\Container $c){
+    public function __construct(\Slim\Container $c)
+    {
         $this->c = $c;
     }
-    public function getFormulaire(Request $rq,Response $rs, array $args): Response {
+
+    public function getFormulaire(Request $rq, Response $rs, array $args): Response
+    {
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -87,5 +90,13 @@ class ControleurCreation
         $path = $this->container->router->pathFor( '/' ) ;
         return $rs->withRedirect($path);
 
+    }
+
+    public function gererPost(Request $rq, Response $rs, array $args): Response
+    {
+        print $rq->getParsedBody();
+
+        $rs = $rs->withStatus(201);
+        return $rs;
     }
 }
