@@ -79,6 +79,10 @@ class VueCompte
 
         return $html;
     }
+    /**
+     * Methode qui affiche la page de connexion
+     * @return string contenu html
+     */
     private function connexion(): string
     {
         $path = $this->container->router->pathFor('connexion');
@@ -106,6 +110,8 @@ class VueCompte
         return $html;
     }
 
+
+
      private function connexiongranted(): string
     {
         $path = $this->container->router->pathFor('racine');
@@ -115,6 +121,9 @@ class VueCompte
         END;
         return $html;
     }
+
+
+
     private function connexionfail(): string
     {
         $path = $this->container->router->pathFor('connexion');
