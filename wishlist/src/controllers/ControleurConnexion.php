@@ -21,7 +21,6 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        $elem = [];
         $vue = new \wishlist\views\VueCompte($elem, $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
@@ -43,14 +42,14 @@ class ControleurConnexion
         if(isset($user)){
             if (password_verify($Mdp, $user->hash)) {
         
-            $vue = new \wishlist\views\VueCompte($elem, $this->c);
+            $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 1);
         }else{
-            $vue = new \wishlist\views\VueCompte($elem, $this->c);
+            $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 2);
         }}
         else{
-            $vue = new \wishlist\views\VueCompte($elem, $this->c);
+            $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 2);
         }
 
