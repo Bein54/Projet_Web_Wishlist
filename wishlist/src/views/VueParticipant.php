@@ -16,9 +16,9 @@ class VueParticipant
     }
 
     /**
-     * @param array $vars contient des informations necessaire comme le basepath
+     * @param array $vars contient des informations necessaires comme le basepath
      * @param int $selecteur permet de selectioner la vue voulut
-     * @return string html generer
+     * @return string html generé
      */
     public function render(array $vars, $selecteur)
     {
