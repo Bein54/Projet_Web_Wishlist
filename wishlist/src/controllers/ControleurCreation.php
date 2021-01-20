@@ -19,6 +19,9 @@ class ControleurCreation
         $this->c = $c;
     }
 
+    /*
+     * renvoi le formulaire de creation de liste
+     */
     public function getFormulaire(Request $rq, Response $rs, array $args): Response
     {
         session_start();
@@ -34,7 +37,9 @@ class ControleurCreation
         return $rs;
     }
 
-
+    /*
+     * renvoi le formulaire de creation d'item
+     */
     public function getFormulaireItem(Request $rq, Response $rs, array $args): Response
     {
         session_start();
@@ -43,7 +48,7 @@ class ControleurCreation
         ];
 
         $listes = Liste::query()->select('*')
-            ->get();
+            ->get();//recupere toute les listes
 
 
         $vue = new \wishlist\views\VueCreation($listes, $this->c);
@@ -53,6 +58,9 @@ class ControleurCreation
         return $rs;
     }
 
+    /*
+     *gere le post du formulaire d'ajout d'item
+     */
     public function ajouterItemPost(Request $rq, Response $rs, $args): Response
     {
         session_start();
@@ -60,6 +68,7 @@ class ControleurCreation
             'basepath' => $rq->getUri()->getBasePath()
         ];
 
+        //traite et filtre les donnee du post
         $post = $rq->getParsedBody();
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
         $options = array(
@@ -76,6 +85,7 @@ class ControleurCreation
             ->where('no', '=', $id)
             ->get();
 
+        //cree un nouvel item et y insere les donnee
         $i = new Item();
 
         $i->nom = $nom;
@@ -92,25 +102,28 @@ class ControleurCreation
         return $rs;
     }
 
-
+    /*
+     * gere le post du formulaire d'ajout de liste
+     */
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
         session_start();
-        $post = $rq->getParsedBody();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-
+        //traite les donnees du post
+        $post = $rq->getParsedBody();
         $titre = filter_var($post['titre'], FILTER_SANITIZE_STRING);
         $desc = filter_var($post['description'], FILTER_SANITIZE_STRING);
         $date = filter_var($post['date-expiration'], FILTER_SANITIZE_STRING);
-
+        //cree et insere les donnes de la nouvelle liste
         $liste = new Liste();
         $liste->titre = $titre;
         $liste->description = $desc;
         $liste->expiration = $date;
         $liste->save();
 
+        //genere un token et l'insere a la liste
         $token = random_bytes(32);
         $token = bin2hex($token);
         $liste->token = $token;
@@ -125,18 +138,22 @@ class ControleurCreation
         return $rs;
     }
 
-
+    /*
+     * gere le post du formulaire de reservation
+     */
     public function reservation(Request $rq, Response $rs, array $args): Response
     {
         session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        //traite les donnee du post
         $post = $rq->getParsedBody();
         $id = filter_var($post['id'], FILTER_SANITIZE_NUMBER_INT);
         $id = intval($id);
         var_dump($id);
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
+        //cree une nouvelle reservation
         $r = new Reservation();
         $r->identifiant = $nom;
         $r->idItem = $id;

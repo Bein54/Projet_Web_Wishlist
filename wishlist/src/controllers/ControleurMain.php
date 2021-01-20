@@ -13,6 +13,10 @@ class ControleurMain
     public function __construct(\Slim\Container $c){
         $this->c = $c;
     }
+
+    /**
+     * genere l'html de la page d'acceuil en utilisant la vueParticipant avec le selecteur 0
+     */
     public function getHTML(Request $rq,Response $rs, array $args): Response {
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
