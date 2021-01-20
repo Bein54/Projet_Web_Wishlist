@@ -133,8 +133,8 @@ class VueParticipant
         
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des details de la liste
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;//recup de l'url de chaque items d'une liste
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";//affichage des items
+            $url_liste   = $this->container->router->pathFor( 'item', [id => $item[id]] ) ;//recup de l'url de chaque items d'une liste
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item[nom] . ' ' .  $item[img] ."</a></li>";//affichage des items
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;//url pour ajouter un item
         $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>  <a class='cta' href=$path><button>avoir l'url</button> </ul>";//affichage du bouton pour ajouter un item
