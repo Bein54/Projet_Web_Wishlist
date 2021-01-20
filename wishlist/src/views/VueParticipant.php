@@ -87,7 +87,7 @@ class VueParticipant
     }
     private function home(): string{
         session_start();
-                if (isset($_SESSION['profile'])){
+                if (isset($_SESSION['profile'])){//affiche l'etat de connexion
                     $u  = Utilisateur::query()->select('*')
                                               ->where('idUser','=',$_SESSION['profile'])
                                               ->first();
@@ -103,11 +103,11 @@ class VueParticipant
         $contains = "<ul class='reponse'>";
         foreach ($this->elem as $liste) {
 
-            $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
-            $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";
+            $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;//pour chaque liste trouver le chemin
+            $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";//affichage de la liste
         }
-         $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;
-        $contains .= "<a class='cta' href=$url_liste><button>ajouterListe</button></a></ul>";
+         $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;//url pour ajouter une liste
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterListe</button></a></ul>";//affichage du bouton pour ajouter une liste
         $res = <<<END
     <div >
         $contains
@@ -128,16 +128,16 @@ class VueParticipant
             $descr = $liste['description'];
             $no = $liste['no'];
             $expiration = $liste['expiration'];
-            $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste["no"]] ) ;
+            $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste["no"]] ) ;//affichage bouton pour recup l'url de la liste
         }
         
-        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
+        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des detail de la liste
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
+            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;//recup de l'url de chaque item d'une liste
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";//affichage des items
         }
-        $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
-        $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>  <a class='cta' href=$path><button>avoir l'url</button> </ul>";
+        $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;//url pour ajouter un item
+        $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>  <a class='cta' href=$path><button>avoir l'url</button> </ul>";//affichage du bouton pour ajouter un item
 
 
         $res = <<<END
@@ -166,9 +166,9 @@ class VueParticipant
             $idReserv = $reserv['idReservation'];
         }
 
-        $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';
-        if (!isset($idReserv)){
-            $path = $this->container->router->pathFor('reservation');
+        $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';//affichage des details d'un item
+        if (!isset($idReserv)){//si l'item n'est pas deja reserver
+            $path = $this->container->router->pathFor('reservation');//url pour reserver
             $contains .= "<form action='$path' method='post'>
                             <label>
                                 Nom :
@@ -205,8 +205,9 @@ class VueParticipant
             $descr = $liste['description'];
             $no = $liste['no'];
             $expiration = $liste['expiration'];
-            $path = $this->container->router->pathFor( 'itemsListeToken', ["token" => $liste["token"]] ) ;
+            $path = $this->container->router->pathFor( 'itemsListeToken', ["token" => $liste["token"]] ) ;//url de la liste en passant par son token
         }
+        //affichage de la liste
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
         foreach ($this->elem[1] as $item) {
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
@@ -214,7 +215,7 @@ class VueParticipant
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
         $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>
-        <br><br><br><br> <p>url : $path<p> </ul>";
+        <br><br><br><br> <p>url : $path<p> </ul>";//affichage de l'url contenant le token de la liste
 
 
         $res = <<<END
