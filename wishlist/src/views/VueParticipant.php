@@ -163,7 +163,7 @@ class VueParticipant
             $tarif = $item[tarif];
         }
         foreach ($this->elem[0] as $reserv) {
-            $idReserv = $reserv['idReservation'];
+            $idReserv = $reserv[idReservation];
         }
 
         $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';//affichage des details d'un item
@@ -201,17 +201,17 @@ class VueParticipant
         $no = "";
         $expiration= "";
         foreach ($this->elem[0] as $liste) {
-            $titre = $liste['titre'];
-            $descr = $liste['description'];
-            $no = $liste['no'];
-            $expiration = $liste['expiration'];
-            $path = $this->container->router->pathFor( 'itemsListeToken', ["token" => $liste["token"]] ) ;//url de la liste en passant par son token
+            $titre = $liste[titre];
+            $descr = $liste[description];
+            $no = $liste[no];
+            $expiration = $liste[expiration];
+            $path = $this->container->router->pathFor( 'itemsListeToken', [token => $liste[token]] ) ;//url de la liste en passant par son token
         }
         //affichage de la liste
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
+            $url_liste   = $this->container->router->pathFor( item, [id => $item[id]] ) ;
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item[nom] . ' ' .  $item[img] ."</a></li>";
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
         $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>
