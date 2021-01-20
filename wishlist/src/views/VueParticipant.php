@@ -22,7 +22,7 @@ class VueParticipant
         switch ($selecteur) {
             case 0:
             {
-                $content = $this->Home();
+                $content = $this->home();
                 break;
             }
             case 1:
@@ -63,6 +63,7 @@ class VueParticipant
                             ";
                             if (isset($_SESSION['profile'])){
                                 $html.= "<li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>";
+                                $html.= "<li><a href={$vars['basepath']}/deconnexion>Deconnexion</a></li>";
                                 }else{
 
                                 $html.="<li><a id='creation' href='$path'>login/sign up</a></li>";
@@ -79,10 +80,12 @@ class VueParticipant
         ";
         return $html;
     }
-    private function Home(): string{
+    private function home(): string{
         session_start();
                 if (isset($_SESSION['profile'])){
-                    $u  = Utilisateur::where('idUser','=',$_SESSION['profile'])->first();
+                    $u  = Utilisateur::query()->select('*')
+                                              ->where('idUser','=',$_SESSION['profile'])
+                                              ->first();
                     $ses = "<p>".$u['Identifiant']."<p>";
                 }else{
                     $ses = "<p>pas connecté<p>";

@@ -18,16 +18,12 @@ $app = new \Slim\App($c);
 $app->get('/liste/listeSouhaits',
     function (Request $req, Response $resp, array $args) : Response {
         $controleur = new \wishlist\controllers\ControleurParticipation($this);
-        $resp = $resp->withStatus( 201 ) ;
- 	    // $resp->getBody()->write( 'Liste de liste de souhaits' ) ;
-        //print 'Liste de liste de souhaits';
         return $controleur->getListeSouhaits($req,$resp,$args);
     })->setName('liste');
 
 
 $app->get('/listeItems/listeSouhaits/{no}',
     function (Request $req, Response $resp, array $args) : Response {
-
         $controleur = new \wishlist\controllers\ControleurParticipation($this);
         return $controleur->getItemsListe($req,$resp,$args);
     })->setName('itemsListe');
@@ -93,6 +89,11 @@ $app->get('/connexion/creationCompte', function (Request $req, Response $resp, a
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->creationCompte($req, $resp, $args);
 })->setName('creation');
+
+$app->get('/deconnexion', function (Request $req, Response $resp, array $args) : Response {
+    $controleur = new \wishlist\controllers\ControleurConnexion($this);
+    return $controleur->deconnexion($req, $resp, $args);
+})->setName('deconnexion');
 
 $app->post('/connexion/creationCompte', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);

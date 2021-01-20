@@ -5,6 +5,7 @@ namespace wishlist\controllers;
 
 use Slim\Http\Response;
 use Slim\Http\Request;
+use wishlist\models\Utilisateur;
 
 class ControleurMain
 {
@@ -16,6 +17,13 @@ class ControleurMain
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+
+        if (isset($_SESSION['profile'])) {
+            $u = Utilisateur::query()->select('*')
+                ->where('idUser', '=', $_SESSION['profile'])
+                ->first();
+        }
+
         $vue = new \wishlist\views\VueParticipant([], $this->c);
         $html = $vue->render($htmlvars,0);
         $rs->getBody()->write($html);
