@@ -21,14 +21,12 @@
 
 ## Créer la table reservation :
  
-DROP TABLE IF EXISTS reservation;
-
-Create table reservation (
-idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
-idItem int(11) not null,
-Identifiant varchar(50),
-FOREIGN KEY(idItem)REFERENCES item(id)
-)
+drop table reservation;
+create table reservation (
+    idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
+    identifiant varchar(50) not null,
+    idItem int(11) not null,
+    FOREIGN KEY(idItem)REFERENCES item(id));
 
 DROP TABLE IF EXISTS `utilisateur`;
  create table utilisateur (
