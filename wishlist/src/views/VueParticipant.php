@@ -15,32 +15,37 @@ class VueParticipant
         $this->container = $container;
     }
 
+    /**
+     * @param array $vars contient des informations necessaire comme le basepath
+     * @param int $selecteur permet de selectioner la vue voulut
+     * @return string html generer
+     */
     public function render(array $vars, $selecteur)
     {
         $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
 
         switch ($selecteur) {
-            case 0:
+            case 0: //menu principale
             {
                 $content = $this->home();
                 break;
             }
-            case 1:
+            case 1: //liste des liste de souhaits
             {
                 $content = $this->listeSouhaits();
                 break;
             }
-            case 2:
+            case 2: //detail d'une liste
             {
                 $content = $this->detailListe();
                 break;
             }
-            case 3:
+            case 3: //detail d'un item
             {
                 $content = $this->giveItem();
                 break;
             }
-            case 4:
+            case 4: //url d'une liste de souhait partageable
             {
                 $content = $this->getUrl();
                 break;
