@@ -128,7 +128,7 @@ class VueParticipant
             $descr = $liste[description];
             $no = $liste[no];
             $expiration = $liste[expiration];
-            $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste[no]] ) ;//affichage bouton pour recup l'url de la liste
+            $path = $this->container->router->pathFor( 'giveUrl', [no => $liste[no]] ) ;//affichage bouton pour recup l'url de la liste
         }
         
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des details de la liste
