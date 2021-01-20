@@ -54,6 +54,7 @@ class VueCreation
                 break;
             }
         }
+        $path = $this->container->router->pathFor( 'connexion' ) ;
         $html = "
         <!DOCTYPE html> 
         <html lang='fr'>
