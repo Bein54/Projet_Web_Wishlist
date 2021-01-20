@@ -27,7 +27,11 @@ class VueCompte
             }
             case 1:
             {
-                
+                $content = $this->connexionfail();
+            }
+            case 3:
+            {
+                $content = $this->creerCompte();
             }
 
         }
@@ -80,4 +84,29 @@ class VueCompte
         return $html;
     }
 
+
+
+    private function creerCompte(): string
+    {
+        $path = $this->container->router->pathFor('connexion/créationCompte');
+
+        $html = "<form action='$path' method='post' class='formulaire'>
+        <label>
+            Identifiant :
+            <input type='text' name='Identifiant' value=''>;
+        </label>
+        <br>
+        <label>
+            Mot De Passe :
+            <input type='text' name='Mot de passe' value=''>;
+        </label>
+        <br>
+        <button type='submit'>créer compte</button>
+        </form>
+        "
+        $path = $this->container->router->pathFor('connexion');
+        $html.= "<li><a href='$path'>se connecter</a></li>
+        "
+        return $html;
+    }
 }

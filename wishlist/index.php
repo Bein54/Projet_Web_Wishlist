@@ -96,7 +96,7 @@ $app->get('/connexion/créationCompte', function (Request $req, Response $resp, 
 
 $app->post('/connexion/CréationCompte', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
-    return $controleur->creationCompte($req, $resp, $args);
+    return $controleur->creationComptePost($req, $resp, $args);
 })->setName('creation');
 
 $app->run();
