@@ -7,15 +7,32 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Utilisateur;
 
+/**
+ * Class ControleurConnexion
+ * @package wishlist\controllers
+ */
+
 class ControleurConnexion
 {
     private $c;
 
+    /**
+     * Constructeur de la classe ControleurConnexion
+     * @param \Slim\Container $c
+     */
     public function __construct(\Slim\Container $c)
     {
         $this->c = $c;
     }
 
+    /**
+     * Methode qui appel le render 0 de VueCompte pour afficher
+     * la page de connexion
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getConnexion(Request $rq, Response $rs, array $args): Response
     {
         session_start();
@@ -28,6 +45,13 @@ class ControleurConnexion
         return $rs;
     }
 
+    /**
+     * Methode qui permet de connecter un utilisateur
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function connexion(Request $rq, Response $rs, array $args): Response
     {
         $htmlvars = [
@@ -55,8 +79,14 @@ class ControleurConnexion
                 $url_racine = $this->c->router->pathFor('racine');
                 return $rs->withRedirect($url_racine);
             }
-        
 
+    /**
+     * Methode qui permet de creer un compte
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function creationCompte(Request $rq, Response $rs, array $args): Response
     {
         session_start();
@@ -69,6 +99,13 @@ class ControleurConnexion
         return $rs;
     }
 
+    /**
+     * Methode qui enregistre dans la base de données le compte créer
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function creationComptePost(Request $rq, Response $rs, array $args): Response
     {
         session_start();
@@ -93,6 +130,13 @@ class ControleurConnexion
         return $rs;
     }
 
+    /**
+     * Methode qui permet de deconnecter un compte
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function deconnexion(Request $rq, Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
