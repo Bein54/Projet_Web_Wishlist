@@ -7,10 +7,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class Database {
     public static function connect() {
-        if (file_exists('src/conf/database.ini')) {
-            $donnees = parse_ini_file('src/conf/database.ini');
+        if (file_exists('../../../database.ini')) {
+            $donnees = parse_ini_file('../../../database.ini');
         } else {
-            throw new Exception("Fichier src/config/database.ini inexistant");
+            throw new Exception("Fichier database.ini inexistant");
         }
 
         $db = new DB();
