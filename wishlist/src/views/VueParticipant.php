@@ -47,34 +47,36 @@ class VueParticipant
             }
         }
         $path = $this->container->router->pathFor( 'connexion' ) ;
-        $html = <<<END
+        $html = "
         <!DOCTYPE html> 
-        <html lang="fr">
+        <html lang='fr'>
             <head>
-                <meta charset="utf-8">
+                <meta charset='utf-8'>
                 <title>MyWishlist</title>
-                <link rel="stylesheet" href={$vars['basepath']}/styles.css>   
+                <link rel='stylesheet' href={$vars['basepath']}/styles.css>   
             </head>
 
             <body>
                 <header>
                     <nav>
-                        <ul class="nav_links">
-                            
-                                <li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>
-                                <li><a id="creation" href="$path">login/sign up</a></li>
-                                
-                        </ul>
+                        <ul class='nav_links'>
+                            ";
+                            if (isset($_SESSION['profile'])){
+                                $html.= "<li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>";
+                                }else{
+
+                                $html.="<li><a id='creation' href='$path'>login/sign up</a></li>";
+                                }
+                        $html.="</ul>
                     </nav>    
                     
                 </header> 
-                <div class="content">
+                <div class='content'>
                  $content
                 </div>          
             </body>
         </html>     
-        END;
-
+        ";
         return $html;
     }
     private function Home(): string{
