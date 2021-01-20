@@ -2,19 +2,34 @@
 
 
 namespace wishlist\views;
-
+/**
+ * Class VueCompte
+ * @package wishlist\views
+ */
 
 class VueCompte
 {
     private $elem;
     private $container;
 
+    /**
+     * Constructeur de la classe.
+     * @param $elem
+     * @param $container
+     */
     public function __construct($elem, $container)
     {
         $this->elem = $elem;
         $this->container = $container;
     }
 
+
+    /**
+     * Methode qui creee la base de la page html et qui ajoute
+     * le contenus en fonction de ce qu'on veux
+     * @param $vars
+     * @param $selecteur
+     */
     public function render(array $vars, $selecteur)
     {
         $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';

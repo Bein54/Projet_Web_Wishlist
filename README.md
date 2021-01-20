@@ -79,7 +79,7 @@ Réalisée par VRIGNON Quentin / FERAUX Julien
 
 Mise en place de la déconnexion : 
 URL : 
-Réalisée par : NICOL Benoît
+Réalisée par : NICOL Benoît 
 
 Mise en place des variables de session : 
 URL : 
