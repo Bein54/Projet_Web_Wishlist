@@ -9,6 +9,6 @@ class Role extends Model {
     protected $table = 'role';
 
     public function users(){
-        return $this->hasMany('\mywishlist\models\Utilisateur', 'role_id');
+        return $this->hasMany('\wishlist\models\Utilisateur', 'role_id');
     }
 }

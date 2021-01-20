@@ -9,6 +9,6 @@ class Utilisateur extends Model{
     public $timestamps = false;
 
     public function role(){
-        return $this->belongsTo('wishlist\Model\Role', 'id_role');
+        return $this->belongsTo('\wishlist\models\Role', 'id_role');
     }
 }
