@@ -67,4 +67,26 @@ Réalisée par : VRIGNON Quentin
 
 Ajout d'un item à une liste : 
 URL :
-Réalisée par : VRIGNON Quentin / FERAUX Julien
+Réalisée par : VRIGNON Quentin
+
+Mise en place des tokens sur les listes : 
+URL : 
+Réalisée par : SCHMITT Léonard
+
+Mise en place de la connexion utilisateur et de l'ajout de compte :
+URL : 
+Réalisée par VRIGNON Quentin / FERAUX Julien
+
+Mise en place de la déconnexion : 
+URL : 
+Réalisée par : NICOL Benoît 
+
+Mise en place des variables de session : 
+URL : 
+Réalisée par NICOL Benoît / VRIGNON Quentin
+
+Reservation d'un item : VRIGNON Quentin / SCHMITT Léonard
+
+CSS : 
+Réalisé par un peu tout le monde
+
