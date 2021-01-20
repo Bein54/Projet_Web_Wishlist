@@ -77,7 +77,7 @@ $app->get('/connexion', function (Request $req, Response $resp, array $args) : R
 
 $app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
-    return $controleur->Connexion($req, $resp, $args);
+    return $controleur->connexion($req, $resp, $args);
 })->setName('connexion');
 
 $app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) : Response{

@@ -28,7 +28,7 @@ class ControleurConnexion
         return $rs;
     }
 
-    public function Connexion(Request $rq, Response $rs, array $args): Response
+    public function connexion(Request $rq, Response $rs, array $args): Response
     {
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
@@ -40,16 +40,19 @@ class ControleurConnexion
                 $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING);
                 $user = Utilisateur::where('Identifiant', '=', $identifiant)
                                      ->first();
+
+
+                //la session devrait etre dans le if, mais on ne sait pas pourquoi la function retourne faux.                     
                 session_start();
                 $_SESSION['profile'] = $user['idUser'];
-                var_dump($mdp);
-                var_dump($user);
+                
                     if (password_verify($mdp, $user['MotDePasse'])) {
-
+                        // session_start();
+                        //  $_SESSION['profile'] = $user['idUser'];
                         
                     } 
 
-                //$url_racine = $this->c->router->pathFor('racine');
+                $url_racine = $this->c->router->pathFor('racine');
                 return $rs->withRedirect($url_racine);
             }
         
@@ -85,7 +88,7 @@ class ControleurConnexion
         $user->save();
 
         $vue = new \wishlist\views\VueCompte([], $this->c);
-        //$html = $vue->render($htmlvars, 0);
+        $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;
     }
