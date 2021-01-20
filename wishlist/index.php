@@ -89,12 +89,12 @@ $app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) 
     return $controleur->getUrl($req,$resp,$args);
 })->setName('giveUrl');
 
-$app->get('/connexion/créationCompte', function (Request $req, Response $resp, array $args) : Response {
+$app->get('/connexion/creationCompte', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->creationCompte($req, $resp, $args);
 })->setName('creation');
 
-$app->post('/connexion/créationComptePost', function (Request $req, Response $resp, array $args) : Response {
+$app->post('/connexion/creationComptePost', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->creationComptePost($req, $resp, $args);
 })->setName('creationPost');
