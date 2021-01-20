@@ -1,30 +1,19 @@
 <?php
 ob_end_clean();
 require_once __DIR__."/vendor/autoload.php";
-use Illuminate\Database\Capsule\Manager as DB;
+use wishlist\conf\Database;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+try {
+    Database::connect();
+} catch (Exception $e) {
+    die($e->getMessage());
+}
 $config = require_once __DIR__ . '/src/conf/settings.php';
+
 $c = new \Slim\Container($config);
 $app = new \Slim\App($c);
-
-$db = new DB();
-print ("eloquent est installe ! \n");
-
-$db->addConnection([
-	'driver' => 'mysql',
-	'host' => 'localhost',
-	'database' => 'mywishlist',
-	'username' => 'root',
-	'password' => '',
-	'charset' => 'utf8',
-	'collation' => 'utf8_unicode_ci',
-]);
-
-$db->setAsGlobal();
-$db->bootEloquent();
-print "connecté à la base de données\n";
 
 $app->get('/liste/listeSouhaits',
     function (Request $req, Response $resp, array $args) : Response {
