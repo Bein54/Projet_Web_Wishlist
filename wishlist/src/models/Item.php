@@ -10,6 +10,10 @@ class Item extends Model {
 
 
 	public function liste(){
-		return $this->belongsTo('\wishlist\model\Liste', 'liste_id');
+		return $this->belongsTo('\wishlist\models\Liste', 'liste_id');
 	}
+
+    public function reservation() {
+        return $this->hasOne('\wishlist\models\Reservation', 'item_id');
+    }
 }
