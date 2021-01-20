@@ -7,6 +7,10 @@ namespace wishlist\controllers;
 use Slim\Http\Response;
 use Slim\Http\Request;
 
+/**
+ * Class ControleurParticipation
+ * @package wishlist\controllers
+ */
 class ControleurParticipation
 {
     //atribut correspondant au container
@@ -16,7 +20,13 @@ class ControleurParticipation
         $this->c = $c;
     }
 
-    //fonction liée à la fonctionnalité d'affichage de toutes les listes de souhait
+    /**
+     * fonction liée à la fonctionnalité d'affichage de toutes les listes de souhait
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getListeSouhaits (Request $rq,Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
@@ -34,7 +44,13 @@ class ControleurParticipation
         return $rs;
     }
 
-    //fonction liée à l'affichage de tous les items d'une liste
+    /**
+     * fonction liée à l'affichage de tous les items d'une liste
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getItemsListe(Request $rq,Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
@@ -60,7 +76,13 @@ class ControleurParticipation
         return $rs;
     }
 
-    //fonction permettant de récupérer les items d'une liste à partir d'un token
+    /**
+     * onction permettant de récupérer les items d'une liste à partir d'un token
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getItemsListeToken(Request $rq,Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
@@ -87,7 +109,13 @@ class ControleurParticipation
         return $rs;
     }
 
-    //fonction liée à la récupération d'un item d'une liste
+    /**
+     * fonction liée à la récupération d'un item d'une liste
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getItem(Request $rq,Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
@@ -113,7 +141,13 @@ class ControleurParticipation
         return $rs;
     }
 
-    //fonction liée à la fonctionnalité de récupération d'URL
+    /**
+     * fonction liée à la fonctionnalité de récupération d'URL
+     * @param Request $rq
+     * @param Response $rs
+     * @param array $args
+     * @return Response
+     */
     public function getUrl(Request $rq,Response $rs, array $args): Response {
         session_start();
         $htmlvars = [
