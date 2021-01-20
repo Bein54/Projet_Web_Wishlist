@@ -20,7 +20,7 @@ class ControleurCreation
     }
 
     /*
-     * renvoi le formulaire de creation de liste
+     * renvoie le formulaire de creation de liste
      */
     public function getFormulaire(Request $rq, Response $rs, array $args): Response
     {
@@ -38,7 +38,7 @@ class ControleurCreation
     }
 
     /*
-     * renvoi le formulaire de creation d'item
+     * renvoie le formulaire de creation d'item
      */
     public function getFormulaireItem(Request $rq, Response $rs, array $args): Response
     {
@@ -48,7 +48,7 @@ class ControleurCreation
         ];
 
         $listes = Liste::query()->select('*')
-            ->get();//recupere toute les listes
+            ->get();//recupere toutes les listes
 
 
         $vue = new \wishlist\views\VueCreation($listes, $this->c);
@@ -68,7 +68,7 @@ class ControleurCreation
             'basepath' => $rq->getUri()->getBasePath()
         ];
 
-        //traite et filtre les donnee du post
+        //traite et filtre les donnees du post
         $post = $rq->getParsedBody();
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
         $options = array(
@@ -85,7 +85,7 @@ class ControleurCreation
             ->where('no', '=', $id)
             ->get();
 
-        //cree un nouvel item et y insere les donnee
+        //cree un nouvel item et y insere les donnees
         $i = new Item();
 
         $i->nom = $nom;
@@ -116,14 +116,14 @@ class ControleurCreation
         $titre = filter_var($post['titre'], FILTER_SANITIZE_STRING);
         $desc = filter_var($post['description'], FILTER_SANITIZE_STRING);
         $date = filter_var($post['date-expiration'], FILTER_SANITIZE_STRING);
-        //cree et insere les donnes de la nouvelle liste
+        //cree et insere les donnees de la nouvelle liste
         $liste = new Liste();
         $liste->titre = $titre;
         $liste->description = $desc;
         $liste->expiration = $date;
         $liste->save();
 
-        //genere un token et l'insere a la liste
+        //genere un token et l'insere à la liste
         $token = random_bytes(32);
         $token = bin2hex($token);
         $liste->token = $token;
@@ -147,7 +147,7 @@ class ControleurCreation
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        //traite les donnee du post
+        //traite les donnees du post
         $post = $rq->getParsedBody();
         $id = filter_var($post['id'], FILTER_SANITIZE_NUMBER_INT);
         $id = intval($id);
