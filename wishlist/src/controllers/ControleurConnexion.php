@@ -74,7 +74,7 @@ class ControleurConnexion
         $post = $rq->getParsedBody();
         $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
         $Mdp = filter_var($post['Mot de passe'], FILTER_SANITIZE_STRING) ;
-        $hash=password_hash($Mdp, PASSWORD_DEFAULT(['cost'=> 12] ));
+        $hash=password_hash($Mdp, PASSWORD_DEFAULT;
 
 
 
