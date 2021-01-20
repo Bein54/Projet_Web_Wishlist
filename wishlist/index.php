@@ -85,15 +85,29 @@ $app->post('/ajouterListePost', function (Request $req, Response $resp, array $a
     return $controleur->ajouterListe($req, $resp, $args);
 })->setName('ajouterListePost');
 
-$app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
-    consol.log("ici");
+$app->get('/connexion', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->getConnexion($req, $resp, $args);
+})->setName('connexion');
+
+$app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
+    $controleur = new \wishlist\controllers\ControleurConnexion($this);
+    return $controleur->Connexion($req, $resp, $args);
 })->setName('connexion');
 
 $app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) : Response{
     $controleur = new \wishlist\controllers\ControleurParticipation($this);
     return $controleur->getUrl($req,$resp,$args);
 })->setName('giveUrl');
+
+$app->get('/connexion/créationCompte', function (Request $req, Response $resp, array $args) : Response {
+    $controleur = new \wishlist\controllers\ControleurConnexion($this);
+    return $controleur->creationCompte($req, $resp, $args);
+})->setName('creation');
+
+$app->post('/connexion/CréationCompte', function (Request $req, Response $resp, array $args) : Response {
+    $controleur = new \wishlist\controllers\ControleurConnexion($this);
+    return $controleur->creationCompte($req, $resp, $args);
+})->setName('creation');
 
 $app->run();

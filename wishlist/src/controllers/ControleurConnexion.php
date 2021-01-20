@@ -16,7 +16,7 @@ class ControleurConnexion
         $this->c = $c;
     }
 
-    public function getFormulaireConnexion(Request $rq, Response $rs, array $args): Response
+    public function getConnexion(Request $rq, Response $rs, array $args): Response
     {
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
@@ -24,6 +24,18 @@ class ControleurConnexion
         $elem = [];
         $vue = new \wishlist\views\VueCompte($elem, $this->c);
         $html = $vue->render($htmlvars, 0);
+        $rs->getBody()->write($html);
+        return $rs;
+    }
+
+    public function Connexion(Request $rq, Response $rs, array $args): Response
+    {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $elem = [];
+        $vue = new \wishlist\views\VueCompte($elem, $this->c);
+        $html = $vue->render($htmlvars, 1);
         $rs->getBody()->write($html);
         return $rs;
     }

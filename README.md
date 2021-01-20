@@ -11,7 +11,12 @@ idItem int(11) not null,
 Identifiant varchar(50),
 FOREIGN KEY(idItem)REFERENCES item(id)
 )
-
+ DROP TABLE IF EXISTS `utilisateur`;
+ create table utilisateur (
+idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
+MotDePasse varchar(50) Not NULL,
+Identifiant varchar(50) NOT NULL
+)
 
 
 
