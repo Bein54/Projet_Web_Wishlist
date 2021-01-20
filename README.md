@@ -26,14 +26,15 @@ create table reservation (
     idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
     identifiant varchar(50) not null,
     idItem int(11) not null,
-    FOREIGN KEY(idItem)REFERENCES item(id));
+    FOREIGN KEY(idItem)REFERENCES item(id)
+    );
 
 DROP TABLE IF EXISTS `utilisateur`;
- create table utilisateur (
-idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
-MotDePasse varchar(50) Not NULL,
-Identifiant varchar(50) NOT NULL
-)
+create table utilisateur (
+    idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
+    MotDePasse varchar(50) Not NULL,
+    Identifiant varchar(50) NOT NULL
+);
 
 
 
