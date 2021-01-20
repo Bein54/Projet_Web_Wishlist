@@ -33,7 +33,7 @@ class ControleurConnexion
             'basepath' => $rq->getUri()->getBasePath()
         ];
         $post = $rq->getParsedBody();
-<<<<<<< Updated upstream
+
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
         $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
         $user = Utilisateur::query()->select('*')
@@ -43,7 +43,6 @@ class ControleurConnexion
         if(isset($user)){
             if (password_verify($mdp, $user->hash)) {
         
-=======
         $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
         $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
         $user = Utilisateur::where('Identifiant', '=', $Identifiant)->first();
@@ -51,7 +50,7 @@ class ControleurConnexion
                 $_SESSION['profile'] = $user['idUser'];
         if(isset($user)){
             if (password_verify($Mdp, $user['MotDePasse'])) {
->>>>>>> Stashed changes
+
             $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 1);
         }else{

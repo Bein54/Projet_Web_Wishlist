@@ -80,9 +80,9 @@ class VueParticipant
         session_start();
                 if (isset($_SESSION['profile'])){
                     $u  = Utilisateur::where('idUser','=',$_SESSION['profile'])->first();
-                    $ses = $u['Identifiant'];
+                    $ses = "<p>".$u['Identifiant']."<p>";
                 }else{
-                    $ses = "pas connecté";
+                    $ses = "<p>pas connecté<p>";
                 }
         return $ses;
     }
