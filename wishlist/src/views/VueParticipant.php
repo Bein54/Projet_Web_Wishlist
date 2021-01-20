@@ -156,11 +156,11 @@ class VueParticipant
         $img = "";
         $tarif = "";
         foreach ($this->elem[1] as $item) {
-            $id = $item['id'];
-            $nom = $item['nom'];
-            $descr = $item['descr'];
-            $img = $item['img'];
-            $tarif = $item['tarif'];
+            $id = $item[id];
+            $nom = $item[nom];
+            $descr = $item[descr];
+            $img = $item[img];
+            $tarif = $item[tarif];
         }
         foreach ($this->elem[0] as $reserv) {
             $idReserv = $reserv['idReservation'];
