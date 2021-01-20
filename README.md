@@ -67,4 +67,4 @@ Réalisée par : VRIGNON Quentin
 
 Ajout d'un item à une liste : 
 URL :
-Réalisée par : VRIGNON Quentin
+Réalisée par : VRIGNON Quentin / FERAUX Julien
