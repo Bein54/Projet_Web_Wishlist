@@ -96,7 +96,7 @@ class VueCompte
         $path = $this->container->router->pathFor('racine');
 
         $html = <<<END
-        <li class='reponse'><a href=$path>accéder au site</a></li>;
+        <li class='reponse'><a href=$path>accéder au site</a></li>
         END;
         return $html;
     }
@@ -105,7 +105,7 @@ class VueCompte
         $path = $this->container->router->pathFor('connexion');
 
         $html = <<<END
-        <li class='reponse'><a href=$path>se reconnecter</a></li>;
+        <li class='reponse'><a href=$path>se reconnecter</a></li>
         END;
         return $html;
     }
@@ -120,12 +120,12 @@ class VueCompte
         <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
-            <input type='text' name='identifiant' value=''>;
+            <input type='text' name='identifiant' value=''>
         </label>
         <br>
         <label>
             Mot De Passe :
-            <input type='password' name='mdp' value=''>;
+            <input type='password' name='mdp' value=''>
         </label>
         <br>
         <button type='submit'>créer compte</button>
