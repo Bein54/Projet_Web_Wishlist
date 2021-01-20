@@ -34,7 +34,7 @@ class ControleurConnexion
         ];
         $post = $rq->getParsedBody();
         $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
-        $Mdp = filter_var($post['Mot de passe'], FILTER_SANITIZE_STRING) ;
+        $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
         $user = Utilisateur::query()->select('*')
                 ->where('Identifiant', '=', $Identifiant)
                 ->get();
@@ -73,12 +73,12 @@ class ControleurConnexion
         ];
         $post = $rq->getParsedBody();
         $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
-        $Mdp = filter_var($post['Mot de passe'], FILTER_SANITIZE_STRING) ;
+        $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
         $hash=password_hash($Mdp, PASSWORD_DEFAULT);
 
 
 
-        $user = new User();
+        $user = new Utilisateur();
         $user->Identifiant = $Identifiant;
         $user->MotDePasse = $hash;
         $user->save();
