@@ -124,9 +124,9 @@ class VueParticipant
         $no = "";
         $expiration= "";
         foreach ($this->elem[0] as $liste) {
-            $titre = $liste['titre'];
-            $descr = $liste['description'];
-            $no = $liste['no'];
+            $titre = $liste["titre"];
+            $descr = $liste["description"];
+            $no = $liste["no"];
             $expiration = $liste['expiration'];
             $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste["no"]] ) ;//affichage bouton pour recup l'url de la liste
         }
