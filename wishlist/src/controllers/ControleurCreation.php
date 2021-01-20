@@ -33,7 +33,6 @@ class ControleurCreation
         return $rs;
     }
 
-   
 
     public function getFormulaireItem(Request $rq, Response $rs, array $args): Response
     {
@@ -59,11 +58,11 @@ class ControleurCreation
         ];
 
         $post = $rq->getParsedBody();
-        $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING) ;
+        $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
         $options = array(
             'flags' => FILTER_FLAG_ALLOW_FRACTION,
-            );
-        $description = filter_var($post['description'] , FILTER_SANITIZE_STRING) ;
+        );
+        $description = filter_var($post['description'], FILTER_SANITIZE_STRING);
         $id = filter_var($post['liste'], FILTER_SANITIZE_NUMBER_INT);
         $id = intval($id);
 
@@ -71,8 +70,8 @@ class ControleurCreation
         $tarif = filter_var($post['tarif'], FILTER_SANITIZE_NUMBER_FLOAT, $options);
 
         $liste = Liste::query()->select('*')
-                ->where('no', '=', $id)
-                ->get();
+            ->where('no', '=', $id)
+            ->get();
 
         $i = new Item();
 
@@ -91,7 +90,6 @@ class ControleurCreation
     }
 
 
-
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
         $post = $rq->getParsedBody();
@@ -99,9 +97,9 @@ class ControleurCreation
             'basepath' => $rq->getUri()->getBasePath()
         ];
 
-        $titre=filter_var($post['titre'], FILTER_SANITIZE_STRING);
-        $desc=filter_var($post['description'], FILTER_SANITIZE_STRING);
-        $date=filter_var($post['date-expiration'], FILTER_SANITIZE_STRING);
+        $titre = filter_var($post['titre'], FILTER_SANITIZE_STRING);
+        $desc = filter_var($post['description'], FILTER_SANITIZE_STRING);
+        $date = filter_var($post['date-expiration'], FILTER_SANITIZE_STRING);
 
         $liste = new Liste();
         $liste->titre = $titre;
@@ -109,7 +107,7 @@ class ControleurCreation
         $liste->expiration = $date;
         $liste->save();
 
-        $token = "nosecure".$liste->getAttributeValue("no");
+        $token = "nosecure" . $liste->getAttributeValue("no");
         $liste->token = $token;
         $liste->save();
 
@@ -133,7 +131,7 @@ class ControleurCreation
         $id = intval($id);
         var_dump($id);
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
-        $r = new Reservation;
+        $r = new Reservation();
         $r->identifiant = $nom;
         $r->idItem = $id;
         $r->save();
