@@ -66,7 +66,7 @@ class VueCompte
     }
     private function connexion(): string
     {
-        $path = $this->container->router->pathFor('connexionPost');
+        $path = $this->container->router->pathFor('connexion');
 
         $html = <<<END
         <form action='$path' method='post' class='formulaire'>
@@ -114,7 +114,7 @@ class VueCompte
 
     private function creerCompte(): string
     {
-        $path = $this->container->router->pathFor('creationPost');
+        $path = $this->container->router->pathFor('creation');
 
         $html = <<<END
         <form action='$path' method='post' class='formulaire'>
