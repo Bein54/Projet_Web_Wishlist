@@ -37,26 +37,18 @@ class ControleurConnexion
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
 
                 $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING);
-                $user = Utilisateur::query()->select('*')
-                                     ->where('Identifiant', '=', $identifiant)
+                $user = Utilisateur::where('Identifiant', '=', $identifiant)
                                      ->first();
                 session_start();
                 $_SESSION['profile'] = $user['idUser'];
-                if (isset($user)) {
+                var_dump($mdp);
+                var_dump($user)
                     if (password_verify($mdp, $user['MotDePasse'])) {
 
-                        $vue = new \wishlist\views\VueCompte([], $this->c);
-                        $html = $vue->render($htmlvars, 1);
-                    } else {
-                        $vue = new \wishlist\views\VueCompte([], $this->c);
-                        $html = $vue->render($htmlvars, 2);
-                    }
-                } else {
-                    $vue = new \wishlist\views\VueCompte([], $this->c);
-                    $html = $vue->render($htmlvars, 2);
-                }
+                        
+                    } 
 
-                $url_racine = $this->c->router->pathFor('racine');
+                //$url_racine = $this->c->router->pathFor('racine');
                 return $rs->withRedirect($url_racine);
             }
         
@@ -80,7 +72,7 @@ class ControleurConnexion
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
         $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
         $hash=password_hash($mdp, PASSWORD_DEFAULT);
-
+        var_dump($mdp);
 
 
         $user = new Utilisateur();
@@ -89,7 +81,7 @@ class ControleurConnexion
         $user->save();
 
         $vue = new \wishlist\views\VueCompte([], $this->c);
-        $html = $vue->render($htmlvars, 0);
+        //$html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;
     }
