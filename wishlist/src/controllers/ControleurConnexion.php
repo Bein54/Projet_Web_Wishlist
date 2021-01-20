@@ -18,6 +18,7 @@ class ControleurConnexion
 
     public function getConnexion(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -42,7 +43,7 @@ class ControleurConnexion
                 session_start();
                 $_SESSION['profile'] = $user['idUser'];
                 var_dump($mdp);
-                var_dump($user)
+                var_dump($user);
                     if (password_verify($mdp, $user['MotDePasse'])) {
 
                         
@@ -55,6 +56,7 @@ class ControleurConnexion
 
     public function creationCompte(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -63,8 +65,10 @@ class ControleurConnexion
         $rs->getBody()->write($html);
         return $rs;
     }
+
     public function creationComptePost(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];

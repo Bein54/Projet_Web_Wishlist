@@ -21,6 +21,7 @@ class ControleurCreation
 
     public function getFormulaire(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -36,6 +37,7 @@ class ControleurCreation
 
     public function getFormulaireItem(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -53,6 +55,7 @@ class ControleurCreation
 
     public function ajouterItemPost(Request $rq, Response $rs, $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -92,6 +95,7 @@ class ControleurCreation
 
     public function ajouterListe(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $post = $rq->getParsedBody();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
@@ -124,6 +128,7 @@ class ControleurCreation
 
     public function reservation(Request $rq, Response $rs, array $args): Response
     {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];

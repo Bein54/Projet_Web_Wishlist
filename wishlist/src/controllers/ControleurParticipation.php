@@ -20,6 +20,7 @@ class ControleurParticipation
     }
 
     public function getListeSouhaits (Request $rq,Response $rs, array $args): Response {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -33,6 +34,7 @@ class ControleurParticipation
     }
 
     public function getItemsListe(Request $rq,Response $rs, array $args): Response {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -56,6 +58,7 @@ class ControleurParticipation
 
 
     public function getItemsListeToken(Request $rq,Response $rs, array $args): Response {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -80,6 +83,7 @@ class ControleurParticipation
 
 
     public function getItem(Request $rq,Response $rs, array $args): Response {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
@@ -104,6 +108,7 @@ class ControleurParticipation
     }
 
     public function getUrl(Request $rq,Response $rs, array $args): Response {
+        session_start();
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
