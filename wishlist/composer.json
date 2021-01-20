@@ -1,8 +1,8 @@
 {
 	"require": {
 		"slim/slim":"3.*",
-		"illuminate/database":"^8.0",
-		"php": ">=7.02"
+		"illuminate/database":"5.5.44",
+		"php": ">=7.0"
 	},
     "autoload": {
     	"psr-4" : {
