@@ -28,11 +28,7 @@ class VueCreation
                 break;
             }
 
-            case 1:
-            {
-                $content = $this->reservation();
-                break;
-            }
+            
             case 2:
             {
                 $content = $this->ajouterItem();
@@ -88,7 +84,7 @@ class VueCreation
         ";
         return $html;
     }
-
+    // permet de créer une nouvelle liste
     private function formulaire(): string
     {
         $path = $this->container->router->pathFor('ajouterListePost');
@@ -115,11 +111,8 @@ class VueCreation
     }
 
 
-    private function reservation(): string
-    {
 
-    }
-
+//permet d'ajouter un item
     private function ajouterItem(): string
     {
         $path = $this->container->router->pathFor('ajouterItemPost');
@@ -129,6 +122,7 @@ class VueCreation
             Liste : 
             " . '<div class="box"><select name="liste" >';
         foreach ($this->elem as $liste) {
+            //passe une variable php dans la valeur
             $html .= sprintf('<option value="%d">%s</option>', $liste['no'], $liste['titre']);
         }
 
@@ -165,7 +159,7 @@ class VueCreation
 
     }
 
-
+    //confirmation de la creation d'item
     public function itemConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
@@ -175,6 +169,7 @@ class VueCreation
         <a href=$path><button >Home page </button></a></ul>";
 
 }
+//confirmation de la création de liste
     public function listeConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
@@ -184,7 +179,7 @@ class VueCreation
         <a href=$path><button >Home page </button></a></ul>";
 
 }
-
+//confirmation de la reservation
 public function reservationConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
