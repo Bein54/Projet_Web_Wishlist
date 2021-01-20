@@ -26,7 +26,7 @@ class VueCompte
 
     /**
      * Methode qui creee la base de la page html et qui ajoute
-     * le contenus en fonction de ce qu'on veux
+     * le contenu en fonction de ce qu'on veut
      * @param $vars
      * @param $selecteur
      */
@@ -105,7 +105,10 @@ class VueCompte
 
 
 
-
+    /**
+     * Methode qui affiche l'interface de création de compte
+     * @return string contenu html
+     */
     private function creerCompte(): string
     {
         $path = $this->container->router->pathFor('creation');
