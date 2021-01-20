@@ -195,9 +195,8 @@ class VueParticipant
             $descr = $liste['description'];
             $no = $liste['no'];
             $expiration = $liste['expiration'];
-            $path = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;
+            $path = $this->container->router->pathFor( 'itemsListeToken', ["token" => $liste["token"]] ) ;
         }
-        var_dump($path);
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
         foreach ($this->elem[1] as $item) {
             $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;
