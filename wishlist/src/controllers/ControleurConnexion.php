@@ -40,31 +40,34 @@ class ControleurConnexion
                 ->where('identifiant', '=', $identifiant)
                 ->get();
         
-        if(isset($user)){
+        if(isset($user)) {
             if (password_verify($mdp, $user->hash)) {
-        
-        $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
-        $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
-        $user = Utilisateur::where('Identifiant', '=', $Identifiant)->first();
-        session_start();
+
+                $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING);
+                $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING);
+                $user = Utilisateur::where('Identifiant', '=', $Identifiant)->first();
+                session_start();
                 $_SESSION['profile'] = $user['idUser'];
-        if(isset($user)){
-            if (password_verify($Mdp, $user['MotDePasse'])) {
+                if (isset($user)) {
+                    if (password_verify($Mdp, $user['MotDePasse'])) {
 
-            $vue = new \wishlist\views\VueCompte([], $this->c);
-        $html = $vue->render($htmlvars, 1);
-        }else{
-            $vue = new \wishlist\views\VueCompte([], $this->c);
-        $html = $vue->render($htmlvars, 2);
-        }}
-        else{
-            $vue = new \wishlist\views\VueCompte([], $this->c);
-        $html = $vue->render($htmlvars, 2);
+                        $vue = new \wishlist\views\VueCompte([], $this->c);
+                        $html = $vue->render($htmlvars, 1);
+                    } else {
+                        $vue = new \wishlist\views\VueCompte([], $this->c);
+                        $html = $vue->render($htmlvars, 2);
+                    }
+                } else {
+                    $vue = new \wishlist\views\VueCompte([], $this->c);
+                    $html = $vue->render($htmlvars, 2);
+                }
+
+                $url_racine = $this->c->router->pathFor('racine');
+                return $rs->withRedirect($url_racine);
+            }
         }
-
-        $url_racine = $this->c->router->pathFor( 'racine') ;
-        return $rs->withRedirect($url_racine);
     }
+
     public function creationCompte(Request $rq, Response $rs, array $args): Response
     {
         $htmlvars = [
