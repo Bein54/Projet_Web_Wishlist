@@ -1,17 +1,36 @@
 # Projet_Web_Wishlist
 
-Pour lancer l'application, il faut :
+## Pour lancer l'application, il vous faut :
 
- créer la table reservation :
+### Créer un fichier 'database.ini' contenant le code suivant :
  
- DROP TABLE IF EXISTS `reservation`;
- create table reservation (
+`driver` = "_votre driver_"
+
+`host` = "_votre host_"
+
+`database` = "_le nom de votre base de données_"
+
+`username` = "_votre nom d'utilisateur_"
+
+`password` = "_votre mot de passe_"
+
+`charset` = "_votre charset_"
+
+`collation` = "_votre collation_"
+
+
+## Créer la table reservation :
+ 
+DROP TABLE IF EXISTS reservation;
+
+Create table reservation (
 idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
 idItem int(11) not null,
 Identifiant varchar(50),
 FOREIGN KEY(idItem)REFERENCES item(id)
 )
- DROP TABLE IF EXISTS `utilisateur`;
+
+DROP TABLE IF EXISTS `utilisateur`;
  create table utilisateur (
 idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key,
 MotDePasse varchar(50) Not NULL,
@@ -21,9 +40,9 @@ Identifiant varchar(50) NOT NULL
 
 
 
-URL de l'application :
+## URL de l'application
 
-Liste des fonctionnalités :
+## Liste des fonctionnalités
 
 Sélection et affichage de la liste des listes de souhait : 
 URL : 
@@ -40,7 +59,6 @@ Réalisée par : VRIGNON Quentin
 Créer une liste : 
 URL : 
 Réalisée par : SCHMITT Léonard
-
 
 Partage des URL :
 URL : 
