@@ -35,17 +35,9 @@ class ControleurConnexion
         $post = $rq->getParsedBody();
 
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
-        $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
-        $user = Utilisateur::query()->select('*')
-                ->where('identifiant', '=', $identifiant)
-                ->get();
-        
-        if(isset($user)) {
-            if (password_verify($mdp, $user->hash)) {
 
-                $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING);
                 $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING);
-                $user = Utilisateur::where('Identifiant', '=', $Identifiant)->first();
+                $user = Utilisateur::where('Identifiant', '=', $identifiant)->first();
                 session_start();
                 $_SESSION['profile'] = $user['idUser'];
                 if (isset($user)) {
@@ -65,8 +57,7 @@ class ControleurConnexion
                 $url_racine = $this->c->router->pathFor('racine');
                 return $rs->withRedirect($url_racine);
             }
-        }
-    }
+        
 
     public function creationCompte(Request $rq, Response $rs, array $args): Response
     {
