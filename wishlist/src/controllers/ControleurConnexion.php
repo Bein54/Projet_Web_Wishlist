@@ -33,14 +33,14 @@ class ControleurConnexion
             'basepath' => $rq->getUri()->getBasePath()
         ];
         $post = $rq->getParsedBody();
-        $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
-        $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
+        $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
+        $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
         $user = Utilisateur::query()->select('*')
-                ->where('Identifiant', '=', $Identifiant)
+                ->where('identifiant', '=', $identifiant)
                 ->get();
         
         if(isset($user)){
-            if (password_verify($Mdp, $user->hash)) {
+            if (password_verify($mdp, $user->hash)) {
         
             $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 1);
@@ -72,14 +72,14 @@ class ControleurConnexion
             'basepath' => $rq->getUri()->getBasePath()
         ];
         $post = $rq->getParsedBody();
-        $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
-        $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING) ;
-        $hash=password_hash($Mdp, PASSWORD_DEFAULT);
+        $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
+        $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
+        $hash=password_hash($mdp, PASSWORD_DEFAULT);
 
 
 
         $user = new Utilisateur();
-        $user->Identifiant = $Identifiant;
+        $user->Identifiant = $identifiant;
         $user->MotDePasse = $hash;
         $user->save();
 

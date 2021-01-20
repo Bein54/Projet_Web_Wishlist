@@ -72,12 +72,12 @@ class VueCompte
         <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
-            <input type='text' name='Identifiant' value=''>
+            <input type='text' name='identifiant' value=''>
         </label>
         <br>
         <label>
             Mot De Passe :
-            <input type='text' name='Mdp' value=''>
+            <input type='password' name='mdp' value=''>
         </label>
         <br>
         <button type='submit'>se connecter</button>
@@ -120,12 +120,12 @@ class VueCompte
         <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
-            <input type='text' name='Identifiant' value=''>;
+            <input type='text' name='identifiant' value=''>;
         </label>
         <br>
         <label>
             Mot De Passe :
-            <input type='text' name='Mdp' value=''>;
+            <input type='text' name='mdp' value=''>;
         </label>
         <br>
         <button type='submit'>créer compte</button>
