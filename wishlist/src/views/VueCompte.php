@@ -40,14 +40,7 @@ class VueCompte
                 $content = $this->connexion();
                 break;
             }
-            case 1:
-            {
-                $content = $this->connexiongranted();
-            }
-            case 2:
-            {
-                $content = $this->connexionfail(); 
-            }
+            
             case 3:
             {
                 $content = $this->creerCompte();
@@ -110,29 +103,6 @@ class VueCompte
         return $html;
     }
 
-
-
-     private function connexiongranted(): string
-    {
-        $path = $this->container->router->pathFor('racine');
-
-        $html = <<<END
-        <li class='reponse'><a href=$path>accéder au site</a></li>
-        END;
-        return $html;
-    }
-
-
-
-    private function connexionfail(): string
-    {
-        $path = $this->container->router->pathFor('connexion');
-
-        $html = <<<END
-        <li class='reponse'><a href=$path>se reconnecter</a></li>
-        END;
-        return $html;
-    }
 
 
 
