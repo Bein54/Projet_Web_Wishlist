@@ -10,7 +10,7 @@ try {
 } catch (Exception $e) {
     die($e->getMessage());
 }
-$config = require_once __DIR__ . '/src/conf/settings.php';
+$config = require_once __DIR__ . '../../../../database.ini';
 
 $c = new \Slim\Container($config);
 $app = new \Slim\App($c);
