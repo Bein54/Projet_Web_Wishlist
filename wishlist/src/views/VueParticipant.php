@@ -46,6 +46,7 @@ class VueParticipant
                 break;
             }
         }
+        $path = $this->container->router->pathFor( 'connexion' ) ;
         $html = <<<END
         <!DOCTYPE html> 
         <html lang="fr">
@@ -61,7 +62,7 @@ class VueParticipant
                         <ul class="nav_links">
                             
                                 <li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>
-                                <li><a id="creation" href="#">login/sign up</a></li>
+                                <li><a id="creation" href="$path">login/sign up</a></li>
                                 
                         </ul>
                     </nav>    
