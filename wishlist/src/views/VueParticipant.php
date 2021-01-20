@@ -82,7 +82,7 @@ class VueParticipant
                     $u  = Utilisateur::where('idUser','=',$_SESSION['profile'])->first();
                     $ses = $u['Identifiant'];
                 }else{
-                    $ses = "pas conncté";
+                    $ses = "pas connecté";
                 }
         return $ses;
     }
