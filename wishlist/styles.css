@@ -29,20 +29,28 @@ header {
 }
 
 .nav_links li {
+
 	display: inline-block;
 	padding: 0 20px;
 }
-.nav_links li a {
+.nav_links li a, button {
+	margin-top: 50px;
+	padding: 9px 25px;
+	background-color: rgba(0,136,169,1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
 	transition: all 0.3s ease 0s;
 }
 
-.nav_links li a:hover {
-	color: #0088a9;
+.nav_links li a:hover, button:hover {
+	background-color: rgba(0,136,169,0.8);
 }
 
 .reponse {
-	
+	font-family: "Montserrat", sans-serif;
 	justify-content: space-between;
+	font-size: 14px;
 	color: #edf0f1;
 	padding: 10px 8%;
 }
@@ -68,21 +76,14 @@ input {
 input:hover {
 	background-color: rgba(0,136,169,0.8);
 }
-button {
-	padding: 9px 25px;
-	background-color: rgba(0,136,169,1);
-	border: none;
-	border-radius: 50px;
-	cursor: pointer;
-	transition: all 0.3s ease 0s;
-}
 
-button:hover {
-	background-color: rgba(0,136,169,0.8);
-}
 .formulaire{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.formulaire>input {
+	justify-content: right;
 }
 
