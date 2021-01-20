@@ -103,7 +103,7 @@ class VueParticipant
         $contains = "<ul class='reponse'>";
         foreach ($this->elem as $liste) {
 
-            $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;//pour chaque liste trouver le chemin
+            $url_liste   = $this->container->router->pathFor( 'itemsListe', ["no" => $liste["no"]] ) ;//pour chaque liste trouve le chemin
             $contains .="<li class='reponse'><a href=$url_liste>".$liste['no'] ." ". $liste['titre'] ."</a></li>";//affichage de la liste
         }
          $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;//url pour ajouter une liste
@@ -131,9 +131,9 @@ class VueParticipant
             $path = $this->container->router->pathFor( 'giveUrl', ["no" => $liste["no"]] ) ;//affichage bouton pour recup l'url de la liste
         }
         
-        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des detail de la liste
+        $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des details de la liste
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;//recup de l'url de chaque item d'une liste
+            $url_liste   = $this->container->router->pathFor( 'item', ["id" => $item["id"]] ) ;//recup de l'url de chaque items d'une liste
             $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";//affichage des items
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;//url pour ajouter un item

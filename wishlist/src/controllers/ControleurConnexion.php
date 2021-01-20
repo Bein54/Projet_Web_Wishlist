@@ -26,7 +26,7 @@ class ControleurConnexion
     }
 
     /**
-     * Methode qui appel le render 0 de VueCompte pour afficher
+     * Methode qui appelle le render 0 de VueCompte pour afficher
      * la page de connexion
      * @param Request $rq
      * @param Response $rs
@@ -39,6 +39,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        //ouvre la page html 0
         $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
@@ -57,6 +58,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        //recuperation des données
         $post = $rq->getParsedBody();
 
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
@@ -75,7 +77,7 @@ class ControleurConnexion
                         //  $_SESSION['profile'] = $user['idUser'];
                         
                     } 
-
+                    //redirection vers la racine
                 $url_racine = $this->c->router->pathFor('racine');
                 return $rs->withRedirect($url_racine);
             }
@@ -112,18 +114,20 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        //recuperation des données
         $post = $rq->getParsedBody();
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
         $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING) ;
+        //hashage du mdp
         $hash=password_hash($mdp, PASSWORD_DEFAULT);
-        var_dump($mdp);
+        
 
-
+        //enregistrement des données
         $user = new Utilisateur();
         $user->Identifiant = $identifiant;
         $user->MotDePasse = $hash;
         $user->save();
-
+        //fin de redirection
         $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
@@ -142,6 +146,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
+        // ferme la session
         session_destroy();
         $vue = new \wishlist\views\VueParticipant([], $this->c);
         $html = $vue->render($htmlvars,0);
