@@ -2,7 +2,7 @@
 
 ## Pour lancer l'application, il vous faut :
 
-### Créer un fichier 'database.ini' contenant le code suivant :
+### Créer un fichier 'database.ini' dans le répertoire 'src/conf' contenant le code suivant :
  
 `driver` = "_votre driver_"
 
