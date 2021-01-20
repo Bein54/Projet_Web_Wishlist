@@ -21,7 +21,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        $vue = new \wishlist\views\VueCompte($elem, $this->c);
+        $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;
@@ -61,7 +61,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        $vue = new \wishlist\views\VueCompte($elem, $this->c);
+        $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 3);
         $rs->getBody()->write($html);
         return $rs;
@@ -74,7 +74,7 @@ class ControleurConnexion
         $post = $rq->getParsedBody();
         $Identifiant = filter_var($post['Identifiant'], FILTER_SANITIZE_STRING) ;
         $Mdp = filter_var($post['Mot de passe'], FILTER_SANITIZE_STRING) ;
-        $hash=password_hash($Mdp, PASSWORD_DEFAULT['cost'=> 12] );
+        $hash=password_hash($Mdp, PASSWORD_DEFAULT(['cost'=> 12] ));
 
 
 
@@ -83,7 +83,7 @@ class ControleurConnexion
         $user->MotDePasse = $hash;
         $user->save();
 
-        
+        $vue = new \wishlist\views\VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;

@@ -64,7 +64,8 @@ class VueCompte
     {
         $path = $this->container->router->pathFor('connexion');
 
-        $html = "<form action='$path' method='post' class='formulaire'>
+        $html = <<<END
+        <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
             <input type='text' name='Identifiant' value=''>;
@@ -77,10 +78,12 @@ class VueCompte
         <br>
         <button type='submit'>se connecter</button>
         </form>
-        "
+        END;
         $path = $this->container->router->pathFor('connexion/créationCompte');
-        $html.= "<li><a href='$path'>créer un compte</a></li>
-        "
+        $html.= <<<END
+        <li><a href='$path'>créer un compte</a></li>
+        END;
+
         return $html;
     }
 
@@ -90,7 +93,8 @@ class VueCompte
     {
         $path = $this->container->router->pathFor('connexion/créationCompte');
 
-        $html = "<form action='$path' method='post' class='formulaire'>
+        $html = <<<END
+        <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
             <input type='text' name='Identifiant' value=''>;
@@ -103,10 +107,12 @@ class VueCompte
         <br>
         <button type='submit'>créer compte</button>
         </form>
-        "
+        END;
+
         $path = $this->container->router->pathFor('connexion');
-        $html.= "<li><a href='$path'>se connecter</a></li>
-        "
+        $html.= <<<END
+        <li><a href='$path'>se connecter</a></li>
+        END;
         return $html;
     }
 }
