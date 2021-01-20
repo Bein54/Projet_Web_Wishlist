@@ -1,7 +1,7 @@
 <?php
 
 namespace wishlist\views;
-
+use wishlist\models\Utilisateur;
 
 
 class VueParticipant
@@ -22,7 +22,7 @@ class VueParticipant
         switch ($selecteur) {
             case 0:
             {
-                $content = '';
+                $content = $this->Home();
                 break;
             }
             case 1:
@@ -75,6 +75,16 @@ class VueParticipant
         END;
 
         return $html;
+    }
+    private function Home(): string{
+        session_start();
+                if (isset($_SESSION['profile'])){
+                    $u  = Utilisateur::where('idUser','=',$_SESSION['profile'])->first();
+                    $ses = $u['Identifiant'];
+                }else{
+                    $ses = "pas conncté";
+                }
+        return $ses;
     }
 
     private function listeSouhaits(): string
