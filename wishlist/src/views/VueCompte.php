@@ -125,7 +125,7 @@ class VueCompte
         <br>
         <label>
             Mot De Passe :
-            <input type='text' name='mdp' value=''>;
+            <input type='password' name='mdp' value=''>;
         </label>
         <br>
         <button type='submit'>créer compte</button>
