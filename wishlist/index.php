@@ -79,10 +79,10 @@ $app->get('/connexion', function (Request $req, Response $resp, array $args) : R
     return $controleur->getConnexion($req, $resp, $args);
 })->setName('connexion');
 
-$app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
+$app->post('/connexionPost', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->Connexion($req, $resp, $args);
-})->setName('connexion');
+})->setName('connexionPost');
 
 $app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) : Response{
     $controleur = new \wishlist\controllers\ControleurParticipation($this);
@@ -94,9 +94,9 @@ $app->get('/connexion/créationCompte', function (Request $req, Response $resp, 
     return $controleur->creationCompte($req, $resp, $args);
 })->setName('creation');
 
-$app->post('/connexion/CréationCompte', function (Request $req, Response $resp, array $args) : Response {
+$app->post('/connexion/créationComptePost', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new \wishlist\controllers\ControleurConnexion($this);
     return $controleur->creationComptePost($req, $resp, $args);
-})->setName('creation');
+})->setName('creationPost');
 
 $app->run();

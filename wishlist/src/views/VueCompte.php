@@ -66,24 +66,24 @@ class VueCompte
     }
     private function connexion(): string
     {
-        $path = $this->container->router->pathFor('connexion');
+        $path = $this->container->router->pathFor('connexionPost');
 
         $html = <<<END
         <form action='$path' method='post' class='formulaire'>
         <label>
             Identifiant :
-            <input type='text' name='Identifiant' value=''>;
+            <input type='text' name='Identifiant' value=''>
         </label>
         <br>
         <label>
             Mot De Passe :
-            <input type='text' name='Mot de passe' value=''>;
+            <input type='text' name='Mot de passe' value=''>
         </label>
         <br>
         <button type='submit'>se connecter</button>
         </form>
         END;
-        $path = $this->container->router->pathFor('connexion/créationCompte');
+        $path = $this->container->router->pathFor('creation');
         $html.= <<<END
         <li><a href='$path'>créer un compte</a></li>
         END;
@@ -114,7 +114,7 @@ class VueCompte
 
     private function creerCompte(): string
     {
-        $path = $this->container->router->pathFor('connexion/créationCompte');
+        $path = $this->container->router->pathFor('creationPost');
 
         $html = <<<END
         <form action='$path' method='post' class='formulaire'>
