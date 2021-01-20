@@ -70,7 +70,7 @@ class VueParticipant
                                 }
                         $html.="</ul>
                     </nav>    
-                    
+                    <p>Projet MyWishList</p>
                 </header> 
                 <div class='content'>
                  $content
@@ -86,9 +86,9 @@ class VueParticipant
                     $u  = Utilisateur::query()->select('*')
                                               ->where('idUser','=',$_SESSION['profile'])
                                               ->first();
-                    $ses = "<p>".$u['Identifiant']."<p>";
+                    $ses = "<p>Vous êtes connecté.<p>";
                 }else{
-                    $ses = "<p>pas connecté<p>";
+                    $ses = "<p>Vous êtes déconnecté.<p>";
                 }
         return $ses;
     }

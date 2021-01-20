@@ -93,4 +93,15 @@ class ControleurConnexion
         return $rs;
     }
 
+    public function deconnexion(Request $rq, Response $rs, array $args): Response {
+        session_start();
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        session_destroy();
+        $vue = new \wishlist\views\VueParticipant([], $this->c);
+        $html = $vue->render($htmlvars,0);
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 }

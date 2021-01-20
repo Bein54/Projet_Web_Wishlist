@@ -18,12 +18,6 @@ class ControleurMain
             'basepath' => $rq->getUri()->getBasePath()
         ];
 
-        if (isset($_SESSION['profile'])) {
-            $u = Utilisateur::query()->select('*')
-                ->where('idUser', '=', $_SESSION['profile'])
-                ->first();
-        }
-
         $vue = new \wishlist\views\VueParticipant([], $this->c);
         $html = $vue->render($htmlvars,0);
         $rs->getBody()->write($html);
