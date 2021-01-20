@@ -36,12 +36,14 @@ class ControleurConnexion
 
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
 
-                $Mdp = filter_var($post['Mdp'], FILTER_SANITIZE_STRING);
-                $user = Utilisateur::where('Identifiant', '=', $identifiant)->first();
+                $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING);
+                $user = Utilisateur::query()->select('*')
+                                     ->where('Identifiant', '=', $identifiant)
+                                     ->first();
                 session_start();
                 $_SESSION['profile'] = $user['idUser'];
                 if (isset($user)) {
-                    if (password_verify($Mdp, $user['MotDePasse'])) {
+                    if (password_verify($mdp, $user['MotDePasse'])) {
 
                         $vue = new \wishlist\views\VueCompte([], $this->c);
                         $html = $vue->render($htmlvars, 1);
