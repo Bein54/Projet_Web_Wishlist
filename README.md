@@ -38,55 +38,52 @@ create table utilisateur (
     Identifiant varchar(50) NOT NULL
 );
 
-
-
-
 ## URL de l'application
 
 ## Liste des fonctionnalités
 
-Sélection et affichage de la liste des listes de souhait : 
+#### Sélection et affichage de la liste des listes de souhait : 
 URL : 
 Réalisée par : NICOL Benoît / FERAUX Julien
 
-Détail d'une liste : 
+#### Détail d'une liste : 
 URL :
 Réalisée par : VRIGNON Quentin / NICOL Benoît
 
-Sélection d’un item d’une liste :
+#### Sélection d’un item d’une liste :
 URL :
 Réalisée par : VRIGNON Quentin
 
-Créer une liste : 
+#### Créer une liste : 
 URL : 
 Réalisée par : SCHMITT Léonard
 
-Partage des URL :
+#### Partage des URL :
 URL : 
 Réalisée par : VRIGNON Quentin
 
-Ajout d'un item à une liste : 
+#### Ajout d'un item à une liste : 
 URL :
 Réalisée par : VRIGNON Quentin
 
-Mise en place des tokens sur les listes : 
+#### Mise en place des tokens sur les listes : 
 URL : 
 Réalisée par : SCHMITT Léonard
 
-Mise en place de la connexion utilisateur et de l'ajout de compte :
+#### Mise en place de la connexion utilisateur et de l'ajout de compte :
 URL : 
 Réalisée par VRIGNON Quentin / FERAUX Julien
 
-Mise en place de la déconnexion : 
+#### Mise en place de la déconnexion : 
 URL : 
 Réalisée par : NICOL Benoît 
 
-Mise en place des variables de session : 
-URL : 
+#### Mise en place des variables de session : 
 Réalisée par NICOL Benoît / VRIGNON Quentin
 
-Reservation d'un item : VRIGNON Quentin / SCHMITT Léonard
+#### Reservation d'un item :
+URL : 
+Réalisée par VRIGNON Quentin / SCHMITT Léonard
 
-CSS : 
-Réalisé par un peu tout le monde
-
+#### CSS : 
+Réalisé par tout le monde
