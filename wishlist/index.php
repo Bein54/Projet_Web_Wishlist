@@ -99,4 +99,10 @@ $app->post('/connexion/creationCompte', function (Request $req, Response $resp, 
     return $controleur->creationComptePost($req, $resp, $args);
 })->setName('creation');
 
+$app->get('/listeItems/listeSouhaitsToken/{token}',
+    function (Request $req, Response $resp, array $args) : Response {
+        $controleur = new \wishlist\controllers\ControleurParticipation($this);
+        return $controleur->getItemsListeToken($req,$resp,$args);
+    })->setName('itemsListeToken');
+
 $app->run();

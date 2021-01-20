@@ -55,7 +55,28 @@ class ControleurParticipation
     }
 
 
+    public function getItemsListeToken(Request $rq,Response $rs, array $args): Response {
+        $htmlvars = [
+            'basepath' => $rq->getUri()->getBasePath()
+        ];
+        $token = $args['token'];
 
+
+        $liste = \wishlist\models\Liste::query()->select('*')
+            ->where('token', '=', $token)
+            ->get();
+        $liste = $liste->toArray();
+        $items = \wishlist\models\Item::query()->select('*')
+            ->where('liste_id', '=', $liste[0]['no'])
+            ->get();
+
+        $elem = array($liste ,$items );
+        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
+        $html = $vue->render($htmlvars, 2 );
+
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 
 
     public function getItem(Request $rq,Response $rs, array $args): Response {

@@ -107,7 +107,8 @@ class ControleurCreation
         $liste->expiration = $date;
         $liste->save();
 
-        $token = "nosecure" . $liste->getAttributeValue("no");
+        $token = random_bytes(32);
+        $token = bin2hex($token);
         $liste->token = $token;
         $liste->save();
 
