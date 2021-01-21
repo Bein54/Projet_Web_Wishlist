@@ -6,13 +6,13 @@ use wishlist\models\Utilisateur;
 
 class VueParticipant
 {
-    private $elem;
-    private $container;
+    private ${elem};
+    private ${container};
 
-    public function __construct($elem, $container)
+    public function __construct(${elem}, ${container})
     {
-        $this->elem = $elem;
-        $this->container = $container;
+        $this->elem = ${elem};
+        $this->container = ${container};
     }
 
     /**
@@ -20,34 +20,34 @@ class VueParticipant
      * @param int $selecteur permet de selectioner la vue voulut
      * @return string html generé
      */
-    public function render(array $vars, $selecteur)
+    public function render(array ${vars}, ${selecteur})
     {
-        $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
+        ${content} = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
 
-        switch ($selecteur) {
+        switch (${selecteur}) {
             case 0: //menu principale
             {
-                $content = $this->home();
+                ${content} = $this->home();
                 break;
             }
             case 1: //liste des liste de souhaits
             {
-                $content = $this->listeSouhaits();
+                ${content} = $this->listeSouhaits();
                 break;
             }
             case 2: //detail d'une liste
             {
-                $content = $this->detailListe();
+                ${content} = $this->detailListe();
                 break;
             }
             case 3: //detail d'un item
             {
-                $content = $this->giveItem();
+                ${content} = $this->giveItem();
                 break;
             }
             case 4: //url d'une liste de souhait partageable
             {
-                $content = $this->getUrl();
+                ${content} = $this->getUrl();
                 break;
             }
         }
