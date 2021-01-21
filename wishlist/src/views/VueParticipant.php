@@ -6,13 +6,13 @@ use wishlist\models\Utilisateur;
 
 class VueParticipant
 {
-    private ${elem};
-    private ${container};
+    private $elem;
+    private $container;
 
-    public function __construct(${elem}, ${container})
+    public function __construct($elem, $container)
     {
-        $this->elem = ${elem};
-        $this->container = ${container};
+        $this->elem = $elem;
+        $this->container = $container;
     }
 
     /**
@@ -20,34 +20,34 @@ class VueParticipant
      * @param int $selecteur permet de selectioner la vue voulut
      * @return string html generé
      */
-    public function render(array ${vars}, ${selecteur})
+    public function render(array $vars, $selecteur)
     {
-        ${content} = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
+        $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
 
-        switch (${selecteur}) {
+        switch ($selecteur) {
             case 0: //menu principale
             {
-                ${content} = $this->home();
+                $content = $this->home();
                 break;
             }
             case 1: //liste des liste de souhaits
             {
-                ${content} = $this->listeSouhaits();
+                $content = $this->listeSouhaits();
                 break;
             }
             case 2: //detail d'une liste
             {
-                ${content} = $this->detailListe();
+                $content = $this->detailListe();
                 break;
             }
             case 3: //detail d'un item
             {
-                ${content} = $this->giveItem();
+                $content = $this->giveItem();
                 break;
             }
             case 4: //url d'une liste de souhait partageable
             {
-                ${content} = $this->getUrl();
+                $content = $this->getUrl();
                 break;
             }
         }
@@ -124,17 +124,17 @@ class VueParticipant
         $no = "";
         $expiration= "";
         foreach ($this->elem[0] as $liste) {
-            $titre = $liste[titre];
-            $descr = $liste[description];
-            $no = $liste[no];
-            $expiration = $liste[expiration];
-            $path = $this->container->router->pathFor( 'giveUrl', [no => $liste[no]] ) ;//affichage bouton pour recup l'url de la liste
+            $titre = $liste['titre'];
+            $descr = $liste['description'];
+            $no = $liste['no'];
+            $expiration = $liste['expiration'];
+            $path = $this->container->router->pathFor( 'giveUrl', ['no' => $liste['no']] ) ;//affichage bouton pour recup l'url de la liste
         }
         
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;//affichage des details de la liste
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( 'item', [id => $item[id]] ) ;//recup de l'url de chaque items d'une liste
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item[nom] . ' ' .  $item[img] ."</a></li>";//affichage des items
+            $url_liste   = $this->container->router->pathFor( 'item', ['id' => $item['id']] ) ;//recup de l'url de chaque items d'une liste
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";//affichage des items
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;//url pour ajouter un item
         $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>  <a class='cta' href=$path><button>avoir l'url</button> </ul>";//affichage du bouton pour ajouter un item
@@ -156,14 +156,14 @@ class VueParticipant
         $img = "";
         $tarif = "";
         foreach ($this->elem[1] as $item) {
-            $id = $item[id];
-            $nom = $item[nom];
-            $descr = $item[descr];
-            $img = $item[img];
-            $tarif = $item[tarif];
+            $id = $item['id'];
+            $nom = $item['nom'];
+            $descr = $item['descr'];
+            $img = $item['img'];
+            $tarif = $item['tarif'];
         }
         foreach ($this->elem[0] as $reserv) {
-            $idReserv = $reserv[idReservation];
+            $idReserv = $reserv['idReservation'];
         }
 
         $contains = "<ul class='reponse'><p>". $id . ' ' . $nom.' :' . '<br>' . $descr . ' ' . $img . '<BR>' . 'tarif : '. $tarif . '</p>';//affichage des details d'un item
@@ -201,17 +201,17 @@ class VueParticipant
         $no = "";
         $expiration= "";
         foreach ($this->elem[0] as $liste) {
-            $titre = $liste[titre];
-            $descr = $liste[description];
-            $no = $liste[no];
-            $expiration = $liste[expiration];
-            $path = $this->container->router->pathFor( 'itemsListeToken', [token => $liste[token]] ) ;//url de la liste en passant par son token
+            $titre = $liste['titre'];
+            $descr = $liste['description'];
+            $no = $liste['no'];
+            $expiration = $liste['expiration'];
+            $path = $this->container->router->pathFor( 'itemsListeToken', ['token' => $liste['token']] ) ;//url de la liste en passant par son token
         }
         //affichage de la liste
         $contains = "<ul class='reponse'> ". $no . ' '. $titre. '<BR>' . $descr . '<BR>' .'expire le '. $expiration .'<BR>'  ;
         foreach ($this->elem[1] as $item) {
-            $url_liste   = $this->container->router->pathFor( item, [id => $item[id]] ) ;
-            $contains .= "<li class='reponse'><a href=$url_liste>". $item[nom] . ' ' .  $item[img] ."</a></li>";
+            $url_liste   = $this->container->router->pathFor( 'item', ['id' => $item['id']] ) ;
+            $contains .= "<li class='reponse'><a href=$url_liste>". $item['nom'] . ' ' .  $item['img'] ."</a></li>";
         }
         $url_liste   = $this->container->router->pathFor( 'ajouterItem') ;
         $contains .= "<a class='cta' href=$url_liste><button>ajouterItem</button></a>
