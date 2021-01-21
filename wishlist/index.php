@@ -1,6 +1,6 @@
 <?php
 ob_end_clean();
-require_once __DIR__."/vendor/autoload.php";
+require_once __DIR__."../vendor/autoload.php";
 use wishlist\conf\Database;
 use Slim\Http\Request;
 use Slim\Http\Response;
