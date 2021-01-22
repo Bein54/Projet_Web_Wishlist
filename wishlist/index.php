@@ -82,10 +82,10 @@ $app->get('/connexion', function (Request $req, Response $resp, array $args) : R
     return $controleur->getConnexion($req, $resp, $args);
 })->setName('connexion');
 
-$app->post('/connexionPOST', function (Request $req, Response $resp, array $args) : Response {
+$app->post('/connexion', function (Request $req, Response $resp, array $args) : Response {
     $controleur = new ControleurConnexion($this);
     return $controleur->connexion($req, $resp, $args);
-})->setName('connexionPOST');
+})->setName('connexion');
 
 $app->get('/giveurl/{no}', function (Request $req, Response $resp, array $args) : Response{
     $controleur = new ControleurParticipation($this);
