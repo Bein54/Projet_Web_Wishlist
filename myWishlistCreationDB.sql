@@ -53,6 +53,21 @@ INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `tok
 (3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'3b952c92cba8dfea768693cb8abd51ae7a41b4d4c44d233fd9c38d87ccb5e72a');
 
 drop table if exists reservation;
+create table reservation (
+  idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key, 
+  identifiant varchar(50) not null, 
+  idItem int(11) not null, 
+  FOREIGN KEY(idItem) REFERENCES item(id) 
+);
+
+DROP TABLE IF EXISTS utilisateur;
+create table utilisateur (
+  idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key, 
+  MotDePasse varchar(50) Not NULL, 
+  Identifiant varchar(50) NOT NULL 
+);
+
+drop table if exists reservation;
 create table reservation ( idReservation int(11) NOT NULL AUTO_INCREMENT PRIMARY Key, identifiant varchar(50) not null, idItem int(11) not null, FOREIGN KEY(idItem)REFERENCES item(id) );
 DROP TABLE IF EXISTS utilisateur;
 create table utilisateur ( idUser int(11) NOT NULL AUTO_INCREMENT PRIMARY Key, MotDePasse varchar(50) Not NULL, Identifiant varchar(50) NOT NULL );
