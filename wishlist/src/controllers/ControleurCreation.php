@@ -149,7 +149,6 @@ class ControleurCreation
         $post = $rq->getParsedBody();
         $id = filter_var($post['id'], FILTER_SANITIZE_NUMBER_INT);
         $id = intval($id);
-        var_dump($id);
         $nom = filter_var($post['nom'], FILTER_SANITIZE_STRING);
         //cree une nouvelle reservation
         $r = new Reservation();
