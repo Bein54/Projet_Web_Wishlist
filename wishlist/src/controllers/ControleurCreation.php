@@ -4,8 +4,8 @@
 namespace wishlist\controllers;
 
 use Slim\Container;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 use wishlist\models\Item;
 use wishlist\models\Liste;
 use wishlist\models\Reservation;

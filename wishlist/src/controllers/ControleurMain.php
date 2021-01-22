@@ -4,8 +4,8 @@
 namespace wishlist\controllers;
 
 use Slim\Container;
-use Slim\Http\Response;
-use Slim\Http\Request;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 use wishlist\views\VueParticipant;
 
 class ControleurMain
