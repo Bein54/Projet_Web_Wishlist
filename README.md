@@ -4,7 +4,7 @@ Ce projet a été réalisé dans le cadre de la formation en Programmation Web e
 
 ## Pour lancer l'application, il vous faut :
 
-#### Créer un fichier 'database.ini' dans le répertoire '../../../' (c'est-à-dire dans le dossier contenant le répertoire Projet_Web_Wishlist) contenant le code suivant :
+#### Créer un fichier 'database.ini' dans le dossier contenant le répertoire Projet_Web_Wishlist contenant le code suivant :
  
 `driver` = "_votre driver_"
 
@@ -20,7 +20,7 @@ Ce projet a été réalisé dans le cadre de la formation en Programmation Web e
 
 `collation` = "_votre collation_"
 
-#### Lancer les requêtes SQL contenues dans le fichier [https://github.com/Bein54/Projet_Web_Wishlist/blob/master/myWishlistCreationDB.sql](myWishlistCreationDB.sql)
+#### Lancer les requêtes SQL contenues dans le fichier ([myWishlistCreationDB.sql](https://github.com/Bein54/Projet_Web_Wishlist/blob/master/myWishlistCreationDB.sql))
 
 ## URL de l'application
 
