@@ -3,24 +3,25 @@
 
 namespace wishlist\controllers;
 
+use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Utilisateur;
+use wishlist\views\VueCompte;
 
 /**
  * Class ControleurConnexion
  * @package wishlist\controllers
  */
-
 class ControleurConnexion
 {
     private $c;
 
     /**
      * Constructeur de la classe ControleurConnexion
-     * @param \Slim\Container $c
+     * @param Container $c
      */
-    public function __construct(\Slim\Container $c)
+    public function __construct(Container $c)
     {
         $this->c = $c;
     }
@@ -40,7 +41,7 @@ class ControleurConnexion
             'basepath' => $rq->getUri()->getBasePath()
         ];
         //ouvre la page html 0
-        $vue = new \wishlist\views\VueCompte([], $this->c);
+        $vue = new VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;
@@ -55,16 +56,14 @@ class ControleurConnexion
      */
     public function connexion(Request $rq, Response $rs, array $args): Response
     {
-        $htmlvars = [
-            'basepath' => $rq->getUri()->getBasePath()
-        ];
         //recuperation des données
         $post = $rq->getParsedBody();
 
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
 
                 $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING);
-                $user = Utilisateur::where('Identifiant', '=', $identifiant)
+                $user = Utilisateur::query()->select('*')
+                                     ->where('Identifiant', '=', $identifiant)
                                      ->first();
 
 
@@ -95,7 +94,7 @@ class ControleurConnexion
         $htmlvars = [
             'basepath' => $rq->getUri()->getBasePath()
         ];
-        $vue = new \wishlist\views\VueCompte([], $this->c);
+        $vue = new VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 3);
         $rs->getBody()->write($html);
         return $rs;
@@ -128,7 +127,7 @@ class ControleurConnexion
         $user->MotDePasse = $hash;
         $user->save();
         //fin de redirection
-        $vue = new \wishlist\views\VueCompte([], $this->c);
+        $vue = new VueCompte([], $this->c);
         $html = $vue->render($htmlvars, 0);
         $rs->getBody()->write($html);
         return $rs;

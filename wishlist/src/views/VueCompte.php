@@ -25,10 +25,13 @@ class VueCompte
 
 
     /**
+     *
      * Methode qui creee la base de la page html et qui ajoute
      * le contenu en fonction de ce qu'on veut
-     * @param $vars
+     *
+     * @param array $vars
      * @param $selecteur
+     * @return string contenu html
      */
     public function render(array $vars, $selecteur)
     {
@@ -64,11 +67,11 @@ class VueCompte
                     
                 </header> 
                 <div class="content">
-                 $content
+                 ${content}
                 </div>          
             </body>
         </html>     
-        END;
+END;
 
         return $html;
     }
@@ -81,7 +84,7 @@ class VueCompte
         $path = $this->container->router->pathFor('connexion');
 
         $html = <<<END
-        <form action='$path' method='post' class='formulaire'>
+        <form action='${path}' method='post' class='formulaire'>
         <label>
             Identifiant :
             <input type='text' name='identifiant' value=''>
@@ -94,11 +97,11 @@ class VueCompte
         <br>
         <button type='submit'>se connecter</button>
         </form>
-        END;
+END;
         $path = $this->container->router->pathFor('creation');
         $html.= <<<END
-        <li><a href='$path'>créer un compte</a></li>
-        END;
+        <li><a href='${path}'>créer un compte</a></li>
+END;
 
         return $html;
     }
@@ -114,7 +117,7 @@ class VueCompte
         $path = $this->container->router->pathFor('creation');
 
         $html = <<<END
-        <form action='$path' method='post' class='formulaire'>
+        <form action='${path}' method='post' class='formulaire'>
         <label>
             Identifiant :
             <input type='text' name='identifiant' value=''>
@@ -127,12 +130,12 @@ class VueCompte
         <br>
         <button type='submit'>créer compte</button>
         </form>
-        END;
+END;
 
         $path = $this->container->router->pathFor('connexion');
         $html.= <<<END
-        <li><a href='$path'>se connecter</a></li>
-        END;
+        <li><a href='${path}'>se connecter</a></li>
+END;
         return $html;
     }
 }

@@ -4,19 +4,32 @@
 namespace wishlist\views;
 
 
-use function Symfony\Component\Translation\t;
-
+/**
+ * Class VueCreation
+ * @package wishlist\views
+ */
 class VueCreation
 {
     private $elem;
     private $container;
 
+    /**
+     * VueCreation constructor.
+     * @param $elem
+     * @param $container
+     */
     public function __construct($elem, $container)
     {
         $this->elem = $elem;
         $this->container = $container;
     }
 
+    /**
+     * methode render
+     * @param array $vars
+     * @param $selecteur
+     * @return string contenu html
+     */
     public function render(array $vars, $selecteur)
     {
         $content = '<br><br><b>SELECTEUR INCORRECT</b><br><br>';
@@ -28,7 +41,7 @@ class VueCreation
                 break;
             }
 
-            
+
             case 2:
             {
                 $content = $this->ajouterItem();
@@ -50,7 +63,7 @@ class VueCreation
                 break;
             }
         }
-        $path = $this->container->router->pathFor( 'connexion' ) ;
+        $path = $this->container->router->pathFor('connexion');
         $html = "
         <!DOCTYPE html> 
         <html lang='fr'>
@@ -65,14 +78,14 @@ class VueCreation
                     <nav>
                         <ul class='nav_links'>
                             ";
-                            if (isset($_SESSION['profile'])){
-                                $html.= "<li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>";
-                                $html.= "<li><a href={$vars['basepath']}/deconnexion>Deconnexion</a></li>";
-                                }else{
+        if (isset($_SESSION['profile'])) {
+            $html .= "<li><a href={$vars['basepath']}/liste/listeSouhaits>liste des listes de souhaits</a></li>";
+            $html .= "<li><a href={$vars['basepath']}/deconnexion>Deconnexion</a></li>";
+        } else {
 
-                                $html.="<li><a id='creation' href='$path'>login/sign up</a></li>";
-                                }
-                        $html.="</ul>
+            $html .= "<li><a id='creation' href='$path'>login/sign up</a></li>";
+        }
+        $html .= "</ul>
                     </nav>    
                     <p>Projet MyWishList</p>
                 </header> 
@@ -84,7 +97,11 @@ class VueCreation
         ";
         return $html;
     }
-    // permet de créer une nouvelle liste
+
+    /**
+     * methode permettant de créer une nouvelle liste
+     * @return string contenu html
+     */
     private function formulaire(): string
     {
         $path = $this->container->router->pathFor('ajouterListePost');
@@ -110,9 +127,10 @@ class VueCreation
         return $html;
     }
 
-
-
-//permet d'ajouter un item
+    /**
+     * methode permettant d'ajouter un item
+     * @return string contenu html
+     */
     private function ajouterItem(): string
     {
         $path = $this->container->router->pathFor('ajouterItemPost');
@@ -152,14 +170,16 @@ class VueCreation
     </form>';
         $res = <<<END
     <div >
-        $html
+        ${html}
     </div>
-    END;
+END;
         return $res;
-
     }
 
-    //confirmation de la creation d'item
+    /**
+     * methode permettant la confirmation de la creation d'item
+     * @return string contenu html
+     */
     public function itemConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
@@ -169,7 +189,11 @@ class VueCreation
         <a href=$path><button >Home page </button></a></ul>";
 
 }
-//confirmation de la création de liste
+
+    /**
+     * methode permettant la confirmation de la création de liste
+     * @return string contenu html
+     */
     public function listeConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
@@ -179,8 +203,12 @@ class VueCreation
         <a href=$path><button >Home page </button></a></ul>";
 
 }
-//confirmation de la reservation
-public function reservationConfirmed(): string
+
+    /**
+     * methode permettant la confirmation de la reservation
+     * @return string contenu html
+     */
+    public function reservationConfirmed(): string
     {
         $path = $this->container->router->pathFor('racine');
 
@@ -188,5 +216,5 @@ public function reservationConfirmed(): string
         <br>
         <a href=$path><button >Home page </button></a></ul>";
 
-}
+    }
 }

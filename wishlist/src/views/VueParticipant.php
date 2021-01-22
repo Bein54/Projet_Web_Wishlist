@@ -1,7 +1,6 @@
 <?php
 
 namespace wishlist\views;
-use wishlist\models\Utilisateur;
 
 
 class VueParticipant
@@ -88,9 +87,6 @@ class VueParticipant
     private function home(): string{
         session_start();
                 if (isset($_SESSION['profile'])){//affiche l'etat de connexion
-                    $u  = Utilisateur::query()->select('*')
-                                              ->where('idUser','=',$_SESSION['profile'])
-                                              ->first();
                     $ses = "<p>Vous êtes connecté.<p>";
                 }else{
                     $ses = "<p>Vous êtes déconnecté.<p>";
@@ -109,10 +105,10 @@ class VueParticipant
          $url_liste   = $this->container->router->pathFor( 'ajouterListe') ;//url pour ajouter une liste
         $contains .= "<a class='cta' href=$url_liste><button>ajouterListe</button></a></ul>";//affichage du bouton pour ajouter une liste
         $res = <<<END
-    <div >
-        $contains
+    <div>
+        ${contains}
     </div>
-    END;
+END;
         return $res;
     }
 
@@ -142,9 +138,9 @@ class VueParticipant
 
         $res = <<<END
     <div class="items">
-        $contains
+        ${contains}
     </div>
-    END;
+END;
         return $res;
     }
 
@@ -187,9 +183,9 @@ class VueParticipant
         $contains .= '</ul>';
         $res = <<<END
     <div class="item">
-        $contains
+        ${contains}
     </div>
-    END;
+END;
         return $res;
     }
 
@@ -220,16 +216,10 @@ class VueParticipant
 
         $res = <<<END
     <div class="items">
-        $contains
+        ${contains}
     </div>
-    END;
+END;
         return $res;
     }
-
-
-
 }
 
-
-
-?>

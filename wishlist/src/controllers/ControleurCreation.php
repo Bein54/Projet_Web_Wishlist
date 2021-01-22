@@ -3,18 +3,20 @@
 
 namespace wishlist\controllers;
 
+use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Item;
 use wishlist\models\Liste;
 use wishlist\models\Reservation;
+use wishlist\views\VueCreation;
 
 
 class ControleurCreation
 {
     private $c;
 
-    public function __construct(\Slim\Container $c)
+    public function __construct(Container $c)
     {
         $this->c = $c;
     }
@@ -30,7 +32,7 @@ class ControleurCreation
         ];
 
         $elem = [];
-        $vue = new \wishlist\views\VueCreation($elem, $this->c);
+        $vue = new VueCreation($elem, $this->c);
         $html = $vue->render($htmlvars, 0);
 
         $rs->getBody()->write($html);
@@ -51,7 +53,7 @@ class ControleurCreation
             ->get();//recupere toutes les listes
 
 
-        $vue = new \wishlist\views\VueCreation($listes, $this->c);
+        $vue = new VueCreation($listes, $this->c);
         $html = $vue->render($htmlvars, 2);
 
         $rs->getBody()->write($html);
@@ -81,10 +83,6 @@ class ControleurCreation
         $img = filter_var($post['img'], FILTER_SANITIZE_STRING);
         $tarif = filter_var($post['tarif'], FILTER_SANITIZE_NUMBER_FLOAT, $options);
 
-        $liste = Liste::query()->select('*')
-            ->where('no', '=', $id)
-            ->get();
-
         //cree un nouvel item et y insere les donnees
         $i = new Item();
 
@@ -95,7 +93,7 @@ class ControleurCreation
         $i->tarif = $tarif;
         $i->save();
 
-        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $vue = new VueCreation([], $this->c);
         $html = $vue->render($htmlvars, 3);
 
         $rs->getBody()->write($html);
@@ -131,7 +129,7 @@ class ControleurCreation
 
         // $path = $this->c->router->pathFor('ajouterListe');
         // $rs = $rs->withRedirect($path);
-        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $vue = new VueCreation([], $this->c);
         $html = $vue->render($htmlvars, 4);
 
         $rs->getBody()->write($html);
@@ -159,7 +157,7 @@ class ControleurCreation
         $r->idItem = $id;
         $r->save();
 
-        $vue = new \wishlist\views\VueCreation([], $this->c);
+        $vue = new VueCreation([], $this->c);
         $html = $vue->render($htmlvars, 5);
 
         $rs->getBody()->write($html);

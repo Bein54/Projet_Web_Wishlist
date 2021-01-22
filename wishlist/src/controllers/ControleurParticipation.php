@@ -4,8 +4,13 @@
 namespace wishlist\controllers;
 
 
+use Slim\Container;
 use Slim\Http\Response;
 use Slim\Http\Request;
+use wishlist\models\Item;
+use wishlist\models\Liste;
+use wishlist\models\Reservation;
+use wishlist\views\VueParticipant;
 
 /**
  * Class ControleurParticipation
@@ -16,7 +21,7 @@ class ControleurParticipation
     //atribut correspondant au container
     private $c;
 
-    public function __construct(\Slim\Container $c){
+    public function __construct(Container $c){
         $this->c = $c;
     }
 
@@ -34,10 +39,10 @@ class ControleurParticipation
         ];
 
         //On récupère toutes les listes
-        $listes = \wishlist\models\Liste::query()->select('*')
+        $listes = Liste::query()->select('*')
             ->get();
 
-        $vue = new \wishlist\views\VueParticipant( $listes->toArray(), $this->c);
+        $vue = new VueParticipant( $listes->toArray(), $this->c);
         $html = $vue->render($htmlvars, 1 );
 
         $rs->getBody()->write($html);
@@ -59,17 +64,17 @@ class ControleurParticipation
         $no = intval($args['no']);
 
         //on récupère la liste numéro no
-        $liste = \wishlist\models\Liste::query()->select('*')
+        $liste = Liste::query()->select('*')
             ->where('no', '=', $no)
             ->get();
 
         //on récupère les items liés à la liste numéro no
-        $items = \wishlist\models\Item::query()->select('*')
+        $items = Item::query()->select('*')
         ->where('liste_id', '=', $no)
         ->get();
 
         $elem = array($liste->toArray() ,$items );
-        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
+        $vue = new VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 2 );
 
         $rs->getBody()->write($html);
@@ -91,18 +96,18 @@ class ControleurParticipation
         $token = $args['token'];
 
         //On récupère la liste associée à son token
-        $liste = \wishlist\models\Liste::query()->select('*')
+        $liste = Liste::query()->select('*')
             ->where('token', '=', $token)
             ->get();
         $liste = $liste->toArray();
 
         //On récupère les items liés à cette liste
-        $items = \wishlist\models\Item::query()->select('*')
+        $items = Item::query()->select('*')
             ->where('liste_id', '=', $liste[0]['no'])
             ->get();
 
         $elem = array($liste ,$items );
-        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
+        $vue = new VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 2 );
 
         $rs->getBody()->write($html);
@@ -124,16 +129,16 @@ class ControleurParticipation
         $id = $args['id'] ; 
         
         //on récupère l'item par son ID
-        $item = \wishlist\models\Item::query()->select('*')
+        $item = Item::query()->select('*')
         ->where('id', '=', $id)
         ->get();
         
         //on récupère la réservation liée à l'id de l'item
-        $reserv = \wishlist\models\Reservation::query()->select('*')
+        $reserv = Reservation::query()->select('*')
         ->where('idItem', '=', $id)
         ->get();
         $elem = array($reserv ,$item );
-        $vue = new \wishlist\views\VueParticipant($elem, $this->c);
+        $vue = new VueParticipant($elem, $this->c);
         $html = $vue->render($htmlvars, 3 );
         
 
@@ -156,17 +161,17 @@ class ControleurParticipation
         $no = intval($args['no']);
 
         //on récupère la liste associée à no
-        $liste = \wishlist\models\Liste::query()->select('*')
+        $liste = Liste::query()->select('*')
             ->where('no', '=', $no)
             ->get();
 
         //on récupère l'item associé à l'id
-        $items = \wishlist\models\Item::query()->select('*')
+        $items = Item::query()->select('*')
         ->where('liste_id', '=', $no)
         ->get();
 
         $elem = array($liste->toArray() ,$items );
-        $vue = new \wishlist\views\VueParticipant($elem , $this->c);
+        $vue = new VueParticipant($elem , $this->c);
         $html = $vue->render($htmlvars, 4 );
 
         $rs->getBody()->write($html);
