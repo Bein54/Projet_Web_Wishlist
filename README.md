@@ -40,6 +40,8 @@ create table utilisateur (
 
 ## URL de l'application
 
+https://webetu.iutnc.univ-lorraine.fr/www/nicol6u/Projet_Web_Wishlist/wishlist/
+
 ## Liste des fonctionnalités
 
 ### Sélection et affichage de la liste des listes de souhait : 
