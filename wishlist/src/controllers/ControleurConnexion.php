@@ -8,6 +8,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use wishlist\models\Utilisateur;
 use wishlist\views\VueCompte;
+use wishlist\views\VueParticipant;
 
 /**
  * Class ControleurConnexion
@@ -58,7 +59,7 @@ class ControleurConnexion
     {
         //recuperation des données
         $post = $rq->getParsedBody();
-
+        echo("ici");
         $identifiant = filter_var($post['identifiant'], FILTER_SANITIZE_STRING) ;
 
                 $mdp = filter_var($post['mdp'], FILTER_SANITIZE_STRING);
@@ -147,7 +148,7 @@ class ControleurConnexion
         ];
         // ferme la session
         session_destroy();
-        $vue = new \wishlist\views\VueParticipant([], $this->c);
+        $vue = new VueParticipant([], $this->c);
         $html = $vue->render($htmlvars,0);
         $rs->getBody()->write($html);
         return $rs;
