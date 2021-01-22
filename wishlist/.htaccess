@@ -1,7 +1,7 @@
 RewriteEngine On
 #
 # RewriteBase indispensable sur webetu :
-RewriteBase /www/nicol6u/Projet_Web_Wishlist/wishlist/src
+RewriteBase /www/nicol6u/Projet_Web_Wishlist/wishlist
 
 
 #
